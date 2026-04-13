@@ -1,0 +1,258 @@
+---
+title: "Final Presentation Research Design"
+format: html
+editor: visual
+embed-resources: true
+---
+
+## (1a) Research Question:
+
+**Do economic sanctions imposed by the United States from 2003 to 2023 affect the level of corruption in recipient countries?**
+
+**(1b)** Why am I interested in this question? Well, for many reasons. But to be concise, growing up I had several chats in my household with my Dad who always spoke of corruption in my home country of Pakistan. And I always wondered why people’s attitudes towards something that was so bad in the US were so different abroad, and if it is so bad for one’s country as my Dad said it was, why do countries keep doing it? This led me to become very interested in geopolitics, why it seems that everyone hates the IMF for their loans, and how this ties into micro-level decisions based on social norms and moral considerations. So, now I am studying behavioral economics in Wharton to understand the phenomenon of corruption more precisely. Especially after talking to some professors here who have talked about how corruption on a large scale has been ignored by The World Bank in terms of the way it is treated outside of the realm of development, yet is so obviously important to solving. I’m particularly interested in the U.S. Sanctions because I want to see if the geopolitical tensions that have first established and perpetuated institutions to create outcomes of corruption and weak institutions live on as a sort of poverty trap through sanctions. FOr example, corruption and institutional weakness may lead to ill actions that are sanctioned, and I am wondering if those sanctions only depress a population more to do worse things/be more corrupt, thus in a way only perpetuating the issue. I think this would be very interesting to understand and possibly explore as a development trap. Existing research suggests supporting results to this possibility: that economic sanctions tend to increase corruption in target countries, primarily by distorting economic activity and expanding opportunities for rent-seeking. For example, Dreher, Gassebner, and Siemers (2017) find that sanctions are associated with significantly higher levels of corruption, particularly in autocratic regimes. Using panel data with country and year fixed effects, they show that sanctions restrict formal economic channels, which increases scarcity and discretionary power among officials, and thus fostering bribery and informal exchange. Similarly, Neuenkirch and Neumeier (2016) demonstrate that U.S. sanctions lead to substantial declines in economic growth in targeted countries. While their study focuses on macroeconomic outcomes rather than corruption directly, it provides an important mechanism that economic contraction weakens institutions and pushes economic activity into informal sectors, conditions that are strongly associated with higher corruption. TTherefore, these studies show that sanctions may unintentionally exacerbate corruption by undermining formal markets and institutional capacity, even if their primary goal is to induce political, economic, or tension alleviation/reform. 
+
+**(2)**
+
+I have two testable hypothesis: 
+
+**i) U.S. economic sanctions on average increase corruption from 2003-2023 in recipient countries.**
+
+**ii)) US economic sanctions will increase corruption more strongly in autocracies and weaker or negative effects in democracies.**
+
+In autocratic regimes, sanctions significantly reduce trade and economic growth, which shifts activity into informal and illicit markets (Afesorgbor and Mahadevan 2016; Neuenkirch and Neumeier 2016). Under these conditions, political elites retain centralized control over scarce resources such as import licenses and foreign currency, allowing them to distribute access selectively in exchange for bribes. Empirical evidence supports this mechanism, showing that sanctions are associated with higher corruption levels, particularly in countries with weaker institutional constraints (Dreher, Gassebner, and Siemers 2017). Additionally, sanctions often generate evasion networks that rely on bribery and informal exchange, further embedding corruption into state structures (Early 2015). However, this relationship is not uniform. In democratic systems, where institutions impose greater accountability, sanctions are more likely to trigger transparency reforms and external monitoring, particularly when tied to governance conditions. Recent research finds that under these circumstances, corruption can decline over time (Gutmann, Langer, and Neumeier 2024). Therefore, I expect sanctions to increase corruption on average, but with stronger positive effects in autocracies and weaker or negative effects in democracies, driven by differences in institutional capacity and accountability.
+
+The impact of economic sanctions don't seem to have clear mechanisms via intuition or empirical basis that reveals itself. Of the little existing research there is, linear regresion models seem to reveal that for cash strapped countries it may make corruption worse, but in other cases lighten corrupt activities out of punitive impact. So two opposing mechanisms do exist, but these mechanisms often are limited in their methodology by only deeming sanctions as a binary (whether a sanction occurred in a certain month/year for a certain country. Creating a system to classify sanctions not only categorically (form of economic sanction), but also taking a new approach of having a measure of the sanction's intensity may allow us to better understand the mechanisms underpinning why a sanction impacts a country's levels of corruption the way it does, as this would allow for the abalysis of heterogoenous effects in regarding certain intensities of sanction in addition to those in the existing literature. The question is tractable, as data is easily avialible from the US's sanctions, and the world bank's governance Indicators, and this can be analyzed for all sanctioned countries at some point in time for the last 20 years. (2003-2023). Therefore, I expect sanctions to increase corruption on average, but with stronger positive effects in autocracies and weaker or negative effects in democracies, driven by differences in institutional capacity and accountability.
+
+**(3)**
+
+For my research project, I’m using a country-year panel dataset from 2003 to 2023 to see how unilateral US trade sanctions actually affect a country’s corruption levels. Here is a breakdown of the variables I'm using and the specific factors they take into account:
+
+**Control of Corruption (World Bank WGI):** This is my dependent variable, and it aggregates perceptions of how much public power is used for private gain. It is comprised of factors like the frequency of "extra payments" (bribery) in business, the diversion of public funds by officials, and the overall effectiveness of a state's anti-corruption agencies.
+
+**US-Only Trade Sanctions (Global Sanctions Database):** This is my main independent variable, which I built by filtering the Drexel GSDB for years where the US acted as the sole sender. It specifically looks at trade-related sanctions, meaning it counts instances where the US restricted exports or imports to a target country without the help of a multilateral coalition like the UN.
+
+**EIU Democracy Index:** I’m using this to factor in how a regime’s openness might change the impact of a sanction. This index is comprised of 60 indicators across five categories, including the fairness of the electoral process, the level of political participation, and the strength of civil liberties like freedom of the press.
+
+**GDP Growth & Log GDP per Capita (World Bank WDI):** These account for the economic health and development level of a country. These variables are based on national accounts data and represent the total market value of all goods and services produced within a country, adjusted for population and normalized via log-transformation to better compare countries of different sizes.
+
+**Trade Openness (World Bank WDI):** This measures a country's integration into the global economy. It is comprised of the total sum of a country's exports and imports of goods and services, expressed as a percentage of its total GDP.
+
+**Political Stability (World Bank WGI):** This estimate captures the risk of government destabilization. It is made up of factors like the likelihood of a coup, the presence of ethnic tensions or internal conflict, and the threat of politically motivated violence or terrorism.
+
+By running this model, I'm trying to figure out if these specific external pressures of from the US actually lead to measurable changes in a target country's institutional integrity while controlling for all these other moving parts.
+
+```{r}
+# Load libraries
+library(tidyverse)
+
+# 1. Set the working directory
+setwd("/Users/ayansayani/Desktop/hw")
+
+# 2. Load the datasets
+sanctions_raw  <- read_csv("sanctions.csv")
+corpol_raw     <- read_csv("corpol.csv")
+
+# 3. Clean and Reshape Corruption Data
+corruption_long <- corpol_raw %>%
+  # Convert wide year columns to long format
+  pivot_longer(cols = contains("[YR"), 
+               names_to = "year", 
+               values_to = "corruption") %>%
+  # Extract numeric year (e.g., "2003" from "2003 [YR2003]")
+  mutate(year = as.numeric(str_extract(year, "\\d{4}")),
+         corruption = as.numeric(ifelse(corruption == "..", NA, corruption))) %>%
+  # Filter specifically for the Control of Corruption indicator
+  filter(str_detect(`Series Name`, "Control of Corruption")) %>%
+  select(country = `Country Name`, year, corruption) %>%
+  drop_na(corruption)
+
+# 4. Define the US-Only Trade Sanction Dummy
+sanctions_expanded <- sanctions_raw %>%
+  # Handle "ongoing" and ensure numeric dates
+  mutate(end = ifelse(end == "ongoing", 2023, end),
+         end = as.numeric(end),
+         begin = as.numeric(begin)) %>%
+  filter(!is.na(begin), !is.na(end)) %>%
+  # Expand the start/end range into individual years
+  rowwise() %>%
+  mutate(year = list(seq(begin, end))) %>%
+  unnest(year) %>%
+  rename(country = sanctioned_state)
+
+# Identify years where other countries (NOT the US) are sanctioning
+others_sanctioning <- sanctions_expanded %>%
+  filter(sanctioning_state != "United States") %>%
+  distinct(country, year) %>%
+  mutate(other_present = TRUE)
+
+# Identify years with US Trade sanctions
+us_trade_active <- sanctions_expanded %>%
+  filter(sanctioning_state == "United States", trade == 1) %>%
+  distinct(country, year) %>%
+  mutate(us_trade_present = TRUE)
+
+# Create the specific Sanction Dummy:
+# 1 if US trade sanction exists AND no other sender is present for that year
+sanction_dummy_df <- us_trade_active %>%
+  left_join(others_sanctioning, by = c("country", "year")) %>%
+  mutate(sanction_dummy = ifelse(us_trade_present == TRUE & is.na(other_present), 1, 0)) %>%
+  select(country, year, sanction_dummy)
+
+# 5. Merge data
+final_df <- corruption_long %>%
+  left_join(sanction_dummy_df, by = c("country", "year")) %>%
+  # Assume countries not in the sanction list have a dummy of 0
+  mutate(sanction_dummy = replace_na(sanction_dummy, 0))
+
+# 6. Basic Linear Regression
+# No Fixed Effects, just corruption ~ Sanction Dummy
+simple_lm <- lm(corruption ~ sanction_dummy, data = final_df)
+
+# Print the results
+summary(simple_lm)
+
+# Simple Boxplot of Corruption by Sanction Status
+ggplot(final_df, aes(x = factor(sanction_dummy), y = corruption)) +
+  geom_boxplot(fill = "blue", alpha = 0.7) +
+  labs(title = "Corruption Scores by US-Only Trade Sanction Status",
+       x = "US-Only Trade Sanction (0 = No, 1 = Yes)",
+       y = "Control of Corruption Score") +
+  theme_minimal()
+```
+
+**(4)**
+
+My regression equation:
+
+$$Corruption_{it} = \alpha_i + \delta_t + \beta_1(Sanction_{it}) + \beta_2(DemocracyEIUScore_{it}) + \beta_3(Sanction_{it} \times DemocracyEIUScore_{it}) + \beta_4(GDPGrowth_{it}) + \beta_5(LogGDPpercapita_{it}) + \beta_6(PolStability_{it}) + \beta_7(TradeOpennes_{it}) + \alpha_i + \delta_t + \epsilon_{it}$$
+
+-   $Corruption_{it}$: The Control of Corruption score for country $i$ in year $t$.
+
+-   $\alpha_i$ (Country Fixed Effects): This term accounts for all factors unique to a specific country that don't change over time (like its geography, history, or stable legal origins).
+
+-   $\delta_t$ (Year Fixed Effects): This accounts for global shocks that hit every country at the same time.
+
+-   $Sanction_{it}$: The dummy variable for a US-only trade sanction.
+
+-   $DemocracyEIUScore_{it}$: The EIU Democracy Index score.
+
+-   $Sanction_{it} \times DemocracyEIUScore_{it}$: The interaction term, which tests if the effect of a sanction on corruption changes depending on the country's level of democracy.
+
+-   $GDPGrowth_{it}$: Annual GDP Growth %.
+
+-   $LogGDPpercapita_{it}$: Log of GDP per capita.
+
+-   $PolStab_{it}$: Political Stability and Absence of Violence score.
+
+-   $TradeOpennes_{it}$: Trade Openness (Exports + Imports as a % of GDP).
+
+-   $\epsilon_{it}$: The error term.
+
+```{r}
+# Load necessary libraries
+# install.packages(c("tidyverse", "fixest"))
+library(tidyverse)
+library(fixest)
+
+# 1. Set the working directory to your data folder
+setwd("/Users/ayansayani/Desktop/hw")
+
+# 2. Load the datasets
+sanctions_raw  <- read_csv("sanctions.csv")
+trade_raw      <- read_csv("trade.csv")
+democracy_raw  <- read_csv("democracy.csv")
+corpol_raw     <- read_csv("corpol.csv")
+growthgdp_raw  <- read_csv("growthgdp.csv")
+
+# --- Helper Function to Clean World Bank style Wide Data ---
+# Fixed to avoid list-cols by selecting only country, year, and value
+clean_wb_data <- function(df, value_name) {
+  df %>%
+    pivot_longer(cols = contains("[YR"), 
+                 names_to = "year", 
+                 values_to = "value") %>%
+    mutate(year = as.numeric(str_extract(year, "\\d{4}")),
+           value = as.numeric(ifelse(value == "..", NA, value))) %>%
+    # Use only the Country Name and Series Name for the final output
+    select(`Country Name`, year, `Series Name`, value) %>%
+    rename(country = `Country Name`)
+}
+
+# 3. Reshape and Clean Control/Outcome Variables
+# Corruption and Political Stability
+corpol_long <- clean_wb_data(corpol_raw) %>%
+  pivot_wider(names_from = `Series Name`, values_from = "value", values_fn = mean) %>%
+  rename(corruption = contains("Control of Corruption"),
+         pol_stability = contains("Political Stability"))
+
+# GDP Growth and Log GDP per capita
+# FIXED: Using the exact Series Names from your dataset
+growth_long <- clean_wb_data(growthgdp_raw) %>%
+  pivot_wider(names_from = `Series Name`, values_from = "value", values_fn = mean) %>%
+  rename(gdp_growth = "GDP growth (annual %)",
+         log_gdppc = "loggdppc") 
+
+# Trade Openness
+trade_long <- clean_wb_data(trade_raw) %>%
+  select(country, year, trade_openness = value)
+
+# Democracy Score (Cleaning the EIU scale)
+democracy_long <- democracy_raw %>%
+  pivot_longer(cols = matches("^\\d{4}$"), 
+               names_to = "year", 
+               values_to = "democracy_score") %>%
+  mutate(year = as.numeric(year),
+         democracy_score = as.numeric(democracy_score)) %>%
+  rename(country = REF_AREA_LABEL) %>%
+  select(country, year, democracy_score)
+
+# 4. Process Sanctions: Define "US-Only Trade Sanction"
+sanctions_long <- sanctions_raw %>%
+  mutate(end = ifelse(end == "ongoing", 2023, end),
+         end = as.numeric(end),
+         begin = as.numeric(begin)) %>%
+  filter(!is.na(begin) & !is.na(end)) %>%
+  rowwise() %>%
+  mutate(year = list(seq(begin, end))) %>%
+  unnest(year) %>%
+  rename(country = sanctioned_state)
+
+# Identify years where other countries (NOT the US) are sanctioning
+others_sanctioning <- sanctions_long %>%
+  filter(sanctioning_state != "United States") %>%
+  distinct(country, year) %>%
+  mutate(other_present = 1)
+
+# Identify years with US Trade Sanctions specifically
+us_trade_active <- sanctions_long %>%
+  filter(sanctioning_state == "United States", trade == 1) %>%
+  distinct(country, year) %>%
+  mutate(us_trade_present = 1)
+
+# Construct the Sanction Dummy: 
+# 1 if US trade sanction exists AND no other sender is present for that country-year
+sanction_dummy_df <- us_trade_active %>%
+  left_join(others_sanctioning, by = c("country", "year")) %>%
+  mutate(sanction_dummy = ifelse(us_trade_present == 1 & is.na(other_present), 1, 0)) %>%
+  select(country, year, sanction_dummy)
+
+# 5. Merge all data into a master panel
+master_df <- corpol_long %>%
+  inner_join(growth_long, by = c("country", "year")) %>%
+  inner_join(trade_long, by = c("country", "year")) %>%
+  inner_join(democracy_long, by = c("country", "year")) %>%
+  left_join(sanction_dummy_df, by = c("country", "year")) %>%
+  mutate(sanction_dummy = replace_na(sanction_dummy, 0))
+
+# 6. Two-Way Fixed Effects Regression
+# Formula: Corruption ~ Sanction * Democracy + Controls | Country FE + Year FE
+model <- feols(corruption ~ sanction_dummy * democracy_score + 
+                 gdp_growth + log_gdppc + pol_stability + trade_openness | 
+                 country + year, 
+               data = master_df)
+
+# Print Summary Results
+summary(model)
+```
+
+## 
