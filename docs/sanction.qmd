@@ -1,0 +1,188 @@
+---
+title: "sanctionintensity"
+format: html
+editor: visual
+---
+
+![]()
+
+```{r}
+# Load necessary libraries
+# install.packages(c("tidyverse", "fixest"))
+library(tidyverse)
+library(fixest)
+
+# 1. Set the working directory to your data folder
+setwd("/Users/ayansayani/Desktop/hw")
+
+# 2. Load the datasets
+sanctions_raw  <- read_csv("sanctions.csv")
+trade_raw      <- read_csv("trade.csv")
+democracy_raw  <- read_csv("democracy.csv")
+corpol_raw     <- read_csv("corpol.csv")
+growthgdp_raw  <- read_csv("growthgdp.csv")
+
+# --- Helper Function to Clean World Bank style Wide Data ---
+# Fixed to avoid list-cols by selecting only country, year, and value
+clean_wb_data <- function(df, value_name = NULL) {
+  df %>%
+    pivot_longer(cols = contains("[YR"), 
+                 names_to = "year", 
+                 values_to = "value") %>%
+    mutate(year = as.numeric(str_extract(year, "\\d{4}")),
+           value = as.numeric(ifelse(value == "..", NA, value))) %>%
+    select(`Country Name`, year, `Series Name`, value) %>%
+    rename(country = `Country Name`)
+}
+
+# 3. Reshape and Clean Control/Outcome Variables
+# Corruption and Political Stability
+corpol_long <- clean_wb_data(corpol_raw) %>%
+  pivot_wider(names_from = `Series Name`, values_from = "value", values_fn = mean) %>%
+  rename(corruption = contains("Control of Corruption"),
+         pol_stability = contains("Political Stability"))
+
+# GDP Growth and Log GDP per capita
+growth_long <- clean_wb_data(growthgdp_raw) %>%
+  pivot_wider(names_from = `Series Name`, values_from = "value", values_fn = mean) %>%
+  rename(gdp_growth = "GDP growth (annual %)",
+         log_gdppc = "loggdppc") 
+
+# Trade Openness
+trade_long <- clean_wb_data(trade_raw) %>%
+  select(country, year, trade_openness = value)
+
+# Democracy Score (Cleaning the EIU scale)
+democracy_long <- democracy_raw %>%
+  pivot_longer(cols = matches("^\\d{4}$"), 
+               names_to = "year", 
+               values_to = "democracy_score") %>%
+  mutate(year = as.numeric(year),
+         democracy_score = as.numeric(democracy_score)) %>%
+  rename(country = REF_AREA_LABEL) %>%
+  select(country, year, democracy_score)
+
+# 4. Process Sanctions: Define "US-Only Trade Sanction"
+sanctions_long <- sanctions_raw %>%
+  mutate(end = ifelse(end == "ongoing", 2023, end),
+         end = as.numeric(end),
+         begin = as.numeric(begin)) %>%
+  filter(!is.na(begin) & !is.na(end)) %>%
+  rowwise() %>%
+  mutate(year = list(seq(begin, end))) %>%
+  unnest(year) %>%
+  rename(country = sanctioned_state)
+
+# Identify years where other countries (NOT the US) are sanctioning
+others_sanctioning <- sanctions_long %>%
+  filter(sanctioning_state != "United States") %>%
+  distinct(country, year) %>%
+  mutate(other_present = 1)
+
+# Identify years with US Trade Sanctions specifically
+us_trade_active <- sanctions_long %>%
+  filter(sanctioning_state == "United States", trade == 1) %>%
+  distinct(country, year, begin) %>%
+  mutate(us_trade_present = 1)
+
+# Construct the Sanction Dummy:
+# 1 if US trade sanction exists AND no other sender is present for that country-year
+sanction_dummy_df <- us_trade_active %>%
+  left_join(others_sanctioning, by = c("country", "year")) %>%
+  mutate(sanction_dummy = ifelse(us_trade_present == 1 & is.na(other_present), 1, 0)) %>%
+  group_by(country, year) %>%
+  summarise(
+    sanction_dummy = max(sanction_dummy),
+    sanction_start = min(begin),
+    .groups = "drop"
+  ) %>%
+  mutate(duration = ifelse(sanction_dummy == 1, year - sanction_start + 1, 0)) %>%
+  select(country, year, sanction_dummy, duration)
+
+# 5. Merge all data into a master panel
+master_df <- corpol_long %>%
+  inner_join(growth_long, by = c("country", "year")) %>%
+  inner_join(trade_long, by = c("country", "year")) %>%
+  inner_join(democracy_long, by = c("country", "year")) %>%
+  left_join(sanction_dummy_df, by = c("country", "year")) %>%
+  mutate(
+    sanction_dummy = replace_na(sanction_dummy, 0),
+    duration = replace_na(duration, 0),
+    sanction_intensity = sanction_dummy * trade_openness * log(1 + duration)
+  )
+
+# 6. Two-Way Fixed Effects Regression
+# Original binary model
+model_binary <- feols(corruption ~ sanction_dummy * democracy_score + 
+                        gdp_growth + log_gdppc + pol_stability + trade_openness | 
+                        country + year, 
+                      data = master_df)
+
+# New continuous-intensity model
+model_intensity <- feols(corruption ~ sanction_intensity * democracy_score + 
+                           gdp_growth + log_gdppc + pol_stability + trade_openness | 
+                           country + year, 
+                         data = master_df)
+
+# Print Summary Results
+summary(model_binary)
+summary(model_intensity)
+
+```
+
+```{r}
+
+library(ggplot2)
+
+# Extract coefficients and variance-covariance matrix
+coefs <- coef(model_intensity)
+vcov_mat <- vcov(model_intensity)
+
+b1 <- coefs["sanction_intensity"]
+b3 <- coefs["sanction_intensity:democracy_score"]
+
+# Democracy range
+demo_seq <- seq(
+  min(master_df$democracy_score, na.rm = TRUE),
+  max(master_df$democracy_score, na.rm = TRUE),
+  length.out = 200
+)
+
+# Compute marginal effects and standard errors
+marginal_df <- data.frame(
+  democracy_score = demo_seq
+)
+
+marginal_df$marginal_effect <- b1 + b3 * demo_seq
+
+# Delta method for standard errors
+var_b1 <- vcov_mat["sanction_intensity", "sanction_intensity"]
+var_b3 <- vcov_mat["sanction_intensity:democracy_score", "sanction_intensity:democracy_score"]
+cov_b1b3 <- vcov_mat["sanction_intensity", "sanction_intensity:democracy_score"]
+
+marginal_df$se <- sqrt(
+  var_b1 +
+  (demo_seq^2) * var_b3 +
+  2 * demo_seq * cov_b1b3
+)
+
+# Confidence intervals
+marginal_df$upper <- marginal_df$marginal_effect + 1.96 * marginal_df$se
+marginal_df$lower <- marginal_df$marginal_effect - 1.96 * marginal_df$se
+
+# Turning point
+turning_point <- -b1 / b3
+
+# Plot
+ggplot(marginal_df, aes(x = democracy_score, y = marginal_effect)) +
+  geom_line(linewidth = 1) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.2) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_vline(xintercept = turning_point, linetype = "dotted") +
+  labs(
+    title = "Marginal Effect of Sanction Intensity on Corruption",
+    x = "Democracy Score",
+    y = "Marginal Effect of Sanction Intensity"
+  ) +
+  theme_minimal()
+```
