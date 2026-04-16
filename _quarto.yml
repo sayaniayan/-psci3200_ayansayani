@@ -9,4 +9,4 @@ website:
       - href: index.qmd
         text: Home
       - href: sanction.qmd
-        text: Research Design 
+        text: Research
