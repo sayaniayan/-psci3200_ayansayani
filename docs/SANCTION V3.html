@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Final Presentation Research Design</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="SANCTION V3_files/libs/clipboard/clipboard.min.js"></script>
+<script src="SANCTION V3_files/libs/quarto-html/quarto.js"></script>
+<script src="SANCTION V3_files/libs/quarto-html/popper.min.js"></script>
+<script src="SANCTION V3_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="SANCTION V3_files/libs/quarto-html/anchor.min.js"></script>
+<link href="SANCTION V3_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="SANCTION V3_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="SANCTION V3_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="SANCTION V3_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="SANCTION V3_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Final Presentation Research Design</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">(1) Introduction</h2>
+<p><strong>Do economic sanctions imposed by the United States from 2003 to 2023 affect the level of corruption in recipient countries?</strong></p>
+<p><strong>(1b)</strong> Why am I interested in this question? Well, for many reasons. But to be concise, growing up I had several chats in my household with my Dad who always spoke of corruption in my home country of Pakistan. And I always wondered why people’s attitudes towards something that was so bad in the US were so different abroad, and if it is so bad for one’s country as my Dad said it was, why do countries keep doing it? This led me to become very interested in geopolitics, why it seems that everyone hates the IMF for their loans, and how this ties into micro-level decisions based on social norms and moral considerations. So, now I am studying behavioral economics in Wharton to understand the phenomenon of corruption more precisely. Especially after talking to some professors here who have talked about how corruption on a large scale has been ignored by The World Bank in terms of the way it is treated outside of the realm of development, yet is so obviously important to solving. I’m particularly interested in the U.S. Sanctions because I want to see if the geopolitical tensions that have first established and perpetuated institutions to create outcomes of corruption and weak institutions live on as a sort of poverty trap through sanctions. FOr example, corruption and institutional weakness may lead to ill actions that are sanctioned, and I am wondering if those sanctions only depress a population more to do worse things/be more corrupt, thus in a way only perpetuating the issue. I think this would be very interesting to understand and possibly explore as a development trap.</p>
+<p>Existing research suggests supporting results to this possibility: that economic sanctions tend to increase corruption in target countries, primarily by distorting economic activity and expanding opportunities for rent-seeking. For example, Dreher, Gassebner, and Siemers (2017) <span class="citation" data-cites="dreher2017">(<a href="#ref-dreher2017" role="doc-biblioref">Dreher, Gassebner, and Siemers 2017</a>)</span> find that sanctions are associated with significantly higher levels of corruption, particularly in autocratic regimes. Using panel data with country and year fixed effects<span class="citation" data-cites="dreher2017">(<a href="#ref-dreher2017" role="doc-biblioref">Dreher, Gassebner, and Siemers 2017</a>)</span>, they show that sanctions restrict formal economic channels, which increases scarcity and discretionary power among officials, and thus fostering bribery and informal exchange. Similarly, Neuenkirch and Neumeier (2016) <span class="citation" data-cites="neuenkirch2016">(<a href="#ref-neuenkirch2016" role="doc-biblioref">Neuenkirch and Neumeier 2016</a>)</span> demonstrate that U.S. sanctions lead to substantial declines in economic growth in targeted countries. While their study focuses on macroeconomic outcomes rather than corruption directly, it provides an important mechanism that economic contraction weakens institutions and pushes economic activity into informal sectors, conditions that are strongly associated with higher corruption. Therefore, these studies show that sanctions may unintentionally exacerbate corruption by undermining formal markets and institutional capacity, even if their primary goal is to induce political, economic, or tension alleviation/reform.&nbsp;</p>
+<p>NEW ADDITIONS:</p>
+<p>As I menntoned earlier, A key limitation in this literature though is how sanctions are actually measured. Most of these papers, including Dreher, Gassebner, and Siemers (2017)<span class="citation" data-cites="dreher2017">(<a href="#ref-dreher2017" role="doc-biblioref">Dreher, Gassebner, and Siemers 2017</a>)</span>, <span class="citation" data-cites="hufbauer2007">(<a href="#ref-hufbauer2007" role="doc-biblioref">Hufbauer et al. 2007</a>)</span> <span class="citation" data-cites="morgan2014">(<a href="#ref-morgan2014" role="doc-biblioref">Morgan, Bapat, and Kobayashi 2014</a>)</span> just use a binary indicator for whether a country is sanctioned or not, which basically treats all sanctions as the same regardless of how strong they are or how long they last. Even in other major datasets and papers like Hufbauer et al.&nbsp;(2007) or Morgan, Bapat, and Kobayashi (2014), sanctions are usually categorized by type or presence, not really by how much they actually affect the economy. At the same time, these studies tend to use similar controls like GDP per capita, economic growth, trade openness, and political stability, which is good for isolating institutional effects, but the main treatment itself is still pretty blunt. So while we know sanctions matter, we dont really know how differences in their strength translate into corruption outcomes, which seems like a pretty big gap.</p>
+<p>There is some work in related areas that tries to get at this more directly, especially in the sanctions and trade literature. For example, Crozet and Hinz (2020) and Felbermayr et al.&nbsp;(2020)<span class="citation" data-cites="crozet2020 felbermayr2020">(<a href="#ref-crozet2020" role="doc-biblioref">Crozet and Hinz 2020</a>; <a href="#ref-felbermayr2020" role="doc-biblioref">Felbermayr et al. 2020</a>)</span> actually measure sanctions in terms of trade losses or reductions in flows, and some papers also look at duration or financial restrictions as a proxy for how intense a sanction is. But this kind of approach has not really been applied to corruption specifically. In particular, I couldnt really find work that builds a continuous sanction intensity measure that combines exposure and duration when studying corruption outcomes.</p>
+<p>That’s what I try to do here abd whyh I think this intensity measure is novel for corruption effects,, by constructing an index that scales sanctions by trade openness and how long they last. This lets me move beyond just asking whether sanctions increase corruption, and instead look at whether stronger sanctions actually make things worse, and how that differs across regime types. So its not just a replication of existing work, but more of an extension that tries to get at the mechanism in a more precise way, which is pretty cool I would say. I also hope to add in the more precise controls like trade losses and reducntions in flows, and other proxy controls as mentioned regarding Crozet and Hinz’s work.</p>
+</section>
+<section id="hypotheses" class="level2">
+<h2 class="anchored" data-anchor-id="hypotheses">(2) Hypotheses</h2>
+<p>I have two testable hypothesis:&nbsp;</p>
+<p><strong>i) U.S. economic sanctions on average increase corruption from 2003-2023 in recipient countries.</strong></p>
+<p><strong>ii)) US economic sanctions will increase corruption more strongly in autocracies and weaker or negative effects in democracies.</strong></p>
+<p>In autocratic regimes, sanctions significantly reduce trade and economic growth, which shifts activity into informal and illicit markets (Afesorgbor and Mahadevan 2016; Neuenkirch and Neumeier 2016). Under these conditions, political elites retain centralized control over scarce resources such as import licenses and foreign currency, allowing them to distribute access selectively in exchange for bribes. Empirical evidence supports this mechanism, showing that sanctions are associated with higher corruption levels, particularly in countries with weaker institutional constraints (Dreher, Gassebner, and Siemers 2017). Additionally, sanctions often generate evasion networks that rely on bribery and informal exchange, further embedding corruption into state structures (Early 2015). However, this relationship is not uniform. In democratic systems, where institutions impose greater accountability, sanctions are more likely to trigger transparency reforms and external monitoring, particularly when tied to governance conditions. Recent research finds that under these circumstances, corruption can decline over time (Gutmann, Langer, and Neumeier 2024). Therefore, I expect sanctions to increase corruption on average, but with stronger positive effects in autocracies and weaker or negative effects in democracies, driven by differences in institutional capacity and accountability.</p>
+<p>The impact of economic sanctions don’t seem to have clear mechanisms via intuition or empirical basis that reveals itself. Of the little existing research there is, linear regresion models seem to reveal that for cash strapped countries it may make corruption worse, but in other cases lighten corrupt activities out of punitive impact. So two opposing mechanisms do exist, but these mechanisms often are limited in their methodology by only deeming sanctions as a binary (whether a sanction occurred in a certain month/year for a certain country. Creating a system to classify sanctions not only categorically (form of economic sanction), but also taking a new approach of having a measure of the sanction’s intensity may allow us to better understand the mechanisms underpinning why a sanction impacts a country’s levels of corruption the way it does, as this would allow for the abalysis of heterogoenous effects in regarding certain intensities of sanction in addition to those in the existing literature. The question is tractable, as data is easily avialible from the US’s sanctions, and the world bank’s governance Indicators, and this can be analyzed for all sanctioned countries at some point in time for the last 20 years. (2003-2023). Therefore, I expect sanctions to increase corruption on average, but with stronger positive effects in autocracies and weaker or negative effects in democracies, driven by differences in institutional capacity and accountability.</p>
+<p><strong>NEW ADDITIONS:</strong></p>
+<p>I modify my original hypothesis to focus on sanction intensity rather than just the presence of sanctions, and argue that increases in sanction intensity lead to higher levels of corruption, with this effect being significantly stronger in autocratic regimes than in democracies. The reason the intensity measure matters is that it captures how much a sanction actually disrupts the economy, not just whether it exists, which is much more aligned with the underlying mechanism. A marginal increase in sanction intensity, through greater trade exposure or longer duration, should amplify scarcity and economic distortions more in autocracies, where weaker institutions and less oversight allow officials to exploit these conditions through rent-seeking, informal markets, and untracked transactions. At the same time, democratic regimes have stronger institutional checks, more transparency, and greater accountability, which helps limit how much these shocks translate into corruption, even if they still experience the economic effects. I argue mechanically that democratic regimes not only dampen this effect through stronger monitoring and institutional checks, but in some cases sanctions may even reduce corruption, because external pressure combined with public accountability can push governments toward reforms, tighter enforcement, or reduced discretionary power. So the same increase in sanction intensity should have a smaller, or more muted, impact in democracies. To address reverse causality, I also implement a placebo test using lagged corruption, which tests whether sanctions are simply responding to already rising corruption. If this relationship is not present, it strengthens the interpretation that higher sanction intensity is driving corruption through these mechanisms, rather than just reflecting pre-existing institutional trends. Thus the main hypothesis of interest is the second one on heterogeneous effects via regime type.</p>
+</section>
+<section id="data" class="level2">
+<h2 class="anchored" data-anchor-id="data">(3) Data</h2>
+<p>For my research project, I’m using a country-year panel dataset from 2003 to 2023 to see how unilateral US trade sanctions actually affect a country’s corruption levels. Here is a breakdown of the variables I’m using and the specific factors they take into account:</p>
+<p><strong>Control of Corruption (World Bank WGI):</strong> This is my dependent variable, and it aggregates perceptions of how much public power is used for private gain. It is comprised of factors like the frequency of “extra payments” (bribery) in business, the diversion of public funds by officials, and the overall effectiveness of a state’s anti-corruption agencies.</p>
+<p><strong>US-Only Trade Sanctions (Global Sanctions Database)</strong><span class="citation" data-cites="felbermayr2020">(<a href="#ref-felbermayr2020" role="doc-biblioref">Felbermayr et al. 2020</a>)</span><strong>:</strong> (This informs my independent variable as a dummy, and will be used for the intensity measure too in conversion) which I built by filtering the Drexel GSDB for years where the US acted as the sole sender. It specifically looks at trade-related sanctions, meaning it counts instances where the US restricted exports or imports to a target country without the help of a multilateral coalition like the UN.</p>
+<p><strong>EIU Democracy Index:</strong> I’m using this to factor in how a regime’s openness might change the impact of a sanction. This index is comprised of 60 indicators across five categories, including the fairness of the electoral process, the level of political participation, and the strength of civil liberties like freedom of the press.</p>
+<p><strong>GDP Growth &amp; Log GDP per Capita (World Bank WDI):</strong> These account for the economic health and development level of a country. These variables are based on national accounts data and represent the total market value of all goods and services produced within a country, adjusted for population and normalized via log-transformation to better compare countries of different sizes.</p>
+<p><strong>Trade Openness (World Bank WDI):</strong> This measures a country’s integration into the global economy. It is comprised of the total sum of a country’s exports and imports of goods and services, expressed as a percentage of its total GDP.</p>
+<p><strong>Political Stability (World Bank WGI):</strong> This estimate captures the risk of government destabilization. It is made up of factors like the likelihood of a coup, the presence of ethnic tensions or internal conflict, and the threat of politically motivated violence or terrorism.</p>
+<p>(In addition to the binary sanction indicator, I also incorporate a <strong>duration measure</strong>, which captures how long a given US-only trade sanction has been in place for a country in a given year. I construct this using the start year of each sanction episode from the Global Sanctions Database and then track the number of years since imposition for each country-year observation.)</p>
+<p>By running this model, I’m trying to figure out if these specific external pressures of from the US actually lead to measurable changes in a target country’s institutional integrity while controlling for all these other moving parts.</p>
+<div class="cell">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_zfl2tzk2zjt2ocgf4g74 = TinyTable.createTableFunctions("tinytable_zfl2tzk2zjt2ocgf4g74");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '14', j: 2 }, { i: '14', j: 3 } ], css_id: 'tinytable_css_t6hq668y7heokylf2dw8',}, 
+          { positions: [ { i: '6', j: 2 }, { i: '6', j: 3 } ], css_id: 'tinytable_css_mo23wha8rlc03v7y2bvm',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 } ], css_id: 'tinytable_css_z9yci6h26c334bs2cy05',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 } ], css_id: 'tinytable_css_knmka05teljw0gqov3qr',}, 
+          { positions: [ { i: '14', j: 1 } ], css_id: 'tinytable_css_g2h4czdgdf08dcngztn9',}, 
+          { positions: [ { i: '6', j: 1 } ], css_id: 'tinytable_css_kof5ei34jy672vugmo4x',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 } ], css_id: 'tinytable_css_jm7onpwb2og18qk5y7jk',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_drev55ad6ytvah7p94l4',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_zfl2tzk2zjt2ocgf4g74.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_zfl2tzk2zjt2ocgf4g74 td.tinytable_css_t6hq668y7heokylf2dw8, #tinytable_zfl2tzk2zjt2ocgf4g74 th.tinytable_css_t6hq668y7heokylf2dw8 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_zfl2tzk2zjt2ocgf4g74 td.tinytable_css_mo23wha8rlc03v7y2bvm, #tinytable_zfl2tzk2zjt2ocgf4g74 th.tinytable_css_mo23wha8rlc03v7y2bvm {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_zfl2tzk2zjt2ocgf4g74 td.tinytable_css_z9yci6h26c334bs2cy05, #tinytable_zfl2tzk2zjt2ocgf4g74 th.tinytable_css_z9yci6h26c334bs2cy05 { text-align: center }
+    #tinytable_zfl2tzk2zjt2ocgf4g74 td.tinytable_css_knmka05teljw0gqov3qr, #tinytable_zfl2tzk2zjt2ocgf4g74 th.tinytable_css_knmka05teljw0gqov3qr {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_zfl2tzk2zjt2ocgf4g74 td.tinytable_css_g2h4czdgdf08dcngztn9, #tinytable_zfl2tzk2zjt2ocgf4g74 th.tinytable_css_g2h4czdgdf08dcngztn9 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_zfl2tzk2zjt2ocgf4g74 td.tinytable_css_kof5ei34jy672vugmo4x, #tinytable_zfl2tzk2zjt2ocgf4g74 th.tinytable_css_kof5ei34jy672vugmo4x {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_zfl2tzk2zjt2ocgf4g74 td.tinytable_css_jm7onpwb2og18qk5y7jk, #tinytable_zfl2tzk2zjt2ocgf4g74 th.tinytable_css_jm7onpwb2og18qk5y7jk { text-align: left }
+    #tinytable_zfl2tzk2zjt2ocgf4g74 td.tinytable_css_drev55ad6ytvah7p94l4, #tinytable_zfl2tzk2zjt2ocgf4g74 th.tinytable_css_drev55ad6ytvah7p94l4 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_zfl2tzk2zjt2ocgf4g74" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">Raw Sanction Dummy</th>
+                <th scope="col" data-row="0" data-col="3">Raw Sanction Intensity</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="3">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">(Intercept)</td>
+                  <td data-row="1" data-col="2">0.566***</td>
+                  <td data-row="1" data-col="3">0.601***</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2">(0.008)</td>
+                  <td data-row="2" data-col="3">(0.013)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">sanction_dummy</td>
+                  <td data-row="3" data-col="2">-0.104***</td>
+                  <td data-row="3" data-col="3"></td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(0.023)</td>
+                  <td data-row="4" data-col="3"></td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">sanction_intensity</td>
+                  <td data-row="5" data-col="2"></td>
+                  <td data-row="5" data-col="3">-0.001***</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1"></td>
+                  <td data-row="6" data-col="2"></td>
+                  <td data-row="6" data-col="3">(0.000)</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="1">Num.Obs.</td>
+                  <td data-row="7" data-col="2">1568</td>
+                  <td data-row="7" data-col="3">512</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="1">R2</td>
+                  <td data-row="8" data-col="2">0.013</td>
+                  <td data-row="8" data-col="3">0.133</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="1">R2 Adj.</td>
+                  <td data-row="9" data-col="2">0.012</td>
+                  <td data-row="9" data-col="3">0.131</td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="1">AIC</td>
+                  <td data-row="10" data-col="2">626.9</td>
+                  <td data-row="10" data-col="3">68.3</td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="1">BIC</td>
+                  <td data-row="11" data-col="2">642.9</td>
+                  <td data-row="11" data-col="3">81.0</td>
+                </tr>
+                <tr>
+                  <td data-row="12" data-col="1">Log.Lik.</td>
+                  <td data-row="12" data-col="2">-310.425</td>
+                  <td data-row="12" data-col="3">-31.139</td>
+                </tr>
+                <tr>
+                  <td data-row="13" data-col="1">F</td>
+                  <td data-row="13" data-col="2">20.154</td>
+                  <td data-row="13" data-col="3">78.015</td>
+                </tr>
+                <tr>
+                  <td data-row="14" data-col="1">RMSE</td>
+                  <td data-row="14" data-col="2">0.29</td>
+                  <td data-row="14" data-col="3">0.26</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Summary Statistics</caption>
+<colgroup>
+<col style="width: 39%">
+<col style="width: 8%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Minimum</th>
+<th style="text-align: right;">Maximum</th>
+<th style="text-align: right;">Range</th>
+<th style="text-align: right;">Standard Deviation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">V-Dem Political Corruption Index</td>
+<td style="text-align: right;">0.554</td>
+<td style="text-align: right;">0.004</td>
+<td style="text-align: right;">0.965</td>
+<td style="text-align: right;">0.961</td>
+<td style="text-align: right;">0.297</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">US-Only Trade Sanction Dummy</td>
+<td style="text-align: right;">0.117</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">1.000</td>
+<td style="text-align: right;">0.322</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Sanction Intensity</td>
+<td style="text-align: right;">34.461</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">411.212</td>
+<td style="text-align: right;">411.212</td>
+<td style="text-align: right;">72.485</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sanction Duration</td>
+<td style="text-align: right;">0.993</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">62.000</td>
+<td style="text-align: right;">62.000</td>
+<td style="text-align: right;">4.830</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">EIU Democracy Score</td>
+<td style="text-align: right;">5.298</td>
+<td style="text-align: right;">0.260</td>
+<td style="text-align: right;">9.930</td>
+<td style="text-align: right;">9.670</td>
+<td style="text-align: right;">2.132</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">GDP Growth</td>
+<td style="text-align: right;">3.592</td>
+<td style="text-align: right;">-50.339</td>
+<td style="text-align: right;">86.827</td>
+<td style="text-align: right;">137.165</td>
+<td style="text-align: right;">5.834</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Log GDP per Capita</td>
+<td style="text-align: right;">4.040</td>
+<td style="text-align: right;">2.996</td>
+<td style="text-align: right;">5.163</td>
+<td style="text-align: right;">2.167</td>
+<td style="text-align: right;">0.508</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Political Stability</td>
+<td style="text-align: right;">-0.349</td>
+<td style="text-align: right;">-2.711</td>
+<td style="text-align: right;">1.496</td>
+<td style="text-align: right;">4.207</td>
+<td style="text-align: right;">0.875</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Trade Openness</td>
+<td style="text-align: right;">76.504</td>
+<td style="text-align: right;">2.474</td>
+<td style="text-align: right;">258.780</td>
+<td style="text-align: right;">256.307</td>
+<td style="text-align: right;">38.311</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Pre-Sanction Trade Openness</td>
+<td style="text-align: right;">76.867</td>
+<td style="text-align: right;">15.097</td>
+<td style="text-align: right;">233.070</td>
+<td style="text-align: right;">217.974</td>
+<td style="text-align: right;">48.254</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="SANCTION-V3_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="SANCTION-V3_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="notes-this-figure-plots-the-distribution-of-country-year-control-of-corruption-scores-conditional-on-whether-a-country-is-subject-to-a-us-only-trade-sanction-in-a-given-year.-the-boxplots-display-the-median-interquartile-range-and-overall-spread-of-corruption-outcomes-for-sanctioned-1-and-non-sanctioned-0-observations.-the-corruption-measure-is-drawn-from-the-world-banks-worldwide-governance-indicators-and-is-standardized-such-that-higher-values-indicate-better-control-of-corruption." class="level5">
+<h5 class="anchored" data-anchor-id="notes-this-figure-plots-the-distribution-of-country-year-control-of-corruption-scores-conditional-on-whether-a-country-is-subject-to-a-us-only-trade-sanction-in-a-given-year.-the-boxplots-display-the-median-interquartile-range-and-overall-spread-of-corruption-outcomes-for-sanctioned-1-and-non-sanctioned-0-observations.-the-corruption-measure-is-drawn-from-the-world-banks-worldwide-governance-indicators-and-is-standardized-such-that-higher-values-indicate-better-control-of-corruption."><em>Notes:</em> This figure plots the distribution of country-year <em>Control of Corruption</em> scores conditional on whether a country is subject to a US-only trade sanction in a given year. The boxplots display the median, interquartile range, and overall spread of corruption outcomes for sanctioned (1) and non-sanctioned (0) observations. The corruption measure is drawn from the World Bank’s Worldwide Governance Indicators and is standardized such that higher values indicate better control of corruption.</h5>
+</section>
+<section id="the-figure-shows-that-country-years-subject-to-us-only-trade-sanctions-exhibit-lower-median-levels-of-corruption-control-compared-to-non-sanctioned-observations-along-with-a-slightly-wider-dispersion-of-outcomes.-this-pattern-is-consistent-with-the-hypothesis-that-sanctions-are-associated-with-weaker-institutional-environments-and-increased-opportunities-for-rent-seeking-behavior.-however-the-substantial-overlap-in-distributions-suggests-that-sanctions-alone-do-not-fully-account-for-variation-in-corruption-motivating-the-need-for-a-multivariate-framework-to-isolate-the-causal-effect-and-explore-heterogeneity-across-regime-types." class="level5">
+<h5 class="anchored" data-anchor-id="the-figure-shows-that-country-years-subject-to-us-only-trade-sanctions-exhibit-lower-median-levels-of-corruption-control-compared-to-non-sanctioned-observations-along-with-a-slightly-wider-dispersion-of-outcomes.-this-pattern-is-consistent-with-the-hypothesis-that-sanctions-are-associated-with-weaker-institutional-environments-and-increased-opportunities-for-rent-seeking-behavior.-however-the-substantial-overlap-in-distributions-suggests-that-sanctions-alone-do-not-fully-account-for-variation-in-corruption-motivating-the-need-for-a-multivariate-framework-to-isolate-the-causal-effect-and-explore-heterogeneity-across-regime-types.">The figure shows that country-years subject to US-only trade sanctions exhibit lower median levels of corruption control compared to non-sanctioned observations, along with a slightly wider dispersion of outcomes. This pattern is consistent with the hypothesis that sanctions are associated with weaker institutional environments and increased opportunities for rent-seeking behavior. However, the substantial overlap in distributions suggests that sanctions alone do not fully account for variation in corruption, motivating the need for a multivariate framework to isolate the causal effect and explore heterogeneity across regime types.</h5>
+<p>(Further) Interpretation of the plot: Let it be known that this plot is based off the sanction dummy (as the assignment detailed using the ggplot from the last assignment) which is just the raw regression of control of corruptin on sanction dummy, Thus, it is the case that this plot is showing that simply being sanctioned at all is associated with lower levels of corruption control, as seen by the lower median line and slight downward shift of the distribution for sanctioned country-years (1) compared to non-sanctioned ones (0). In other words, the typical sanctioned observation has a worse corruption score. This pattern is consistent with the raw abd unconditional relationship between corruption and the sanction dummy, essentially reflecting the simple regression of control of corruption on the sanction indicator without additional controls. While the overall distributions still overlap substantially, suggesting that sanctions alone do not fully explain variation in corruption,</p>
+</section>
+</section>
+<section id="a-research-design" class="level2">
+<h2 class="anchored" data-anchor-id="a-research-design">(4a) Research Design</h2>
+<section id="my-regression-equation-updated-with-intensity-of-sanction-as-a-measure" class="level3">
+<h3 class="anchored" data-anchor-id="my-regression-equation-updated-with-intensity-of-sanction-as-a-measure">My regression equation (updated with intensity of sanction as a measure)</h3>
+<p><span class="math display">\[
+Corruption_{it}
+=
+\alpha_i + \delta_t
++ \beta_1 SanctionIntensity_{it}
++ \beta_2 DemocracyScore_{it}
++ \beta_3 \left(SanctionIntensity_{it} \times DemocracyScore_{it}\right)
++ \beta_4 GDPGrowth_{it}
++ \beta_5 LogGDPpc_{it}
++ \beta_6 PolStability_{it}
++ \varepsilon_{it}
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+SanctionIntensity_{it}
+=
+SanctionDummy_{it}
+\times 1-Year Lagged TradeOpenness_{it}
+\times \log(1 + Duration_{it})
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(Corruption_{it}\)</span>: the <strong>Control of Corruption</strong> score for country <span class="math inline">\(i\)</span> in year <span class="math inline">\(t\)</span>, taken from the Worldwide Governance Indicators. Higher values indicate better control of corruption.</p></li>
+<li><p><span class="math inline">\(\alpha_i\)</span>: <strong>country fixed effects</strong>, which absorb all time-invariant characteristics of country <span class="math inline">\(i\)</span>, such as geography, legal origins, colonial history, or other persistent institutional traits.</p></li>
+<li><p><span class="math inline">\(\delta_t\)</span>: <strong>year fixed effects</strong>, which absorb common shocks affecting all countries in year <span class="math inline">\(t\)</span>, such as global recessions, commodity shocks, or major international political changes.</p></li>
+<li><p><span class="math inline">\(SanctionIntensity_{it}\)</span>: the continuous sanction-intensity measure for country <span class="math inline">\(i\)</span> in year <span class="math inline">\(t\)</span>. It increases when a country is under a <strong>US-only trade sanction</strong>, when that country is more exposed to trade, and when the sanction has lasted longer.</p></li>
+<li><p><span class="math inline">\(SanctionDummy_{it}\)</span>: an indicator equal to 1 if country <span class="math inline">\(i\)</span> is subject to a <strong>US-only trade sanction</strong> in year <span class="math inline">\(t\)</span>, and 0 otherwise.</p></li>
+<li><p><span class="math inline">\(Duration_{it}\)</span>: the number of years that the relevant US-only trade sanction has been in place for country <span class="math inline">\(i\)</span> by year <span class="math inline">\(t\)</span>.</p></li>
+<li><p><span class="math inline">\(DemocracyScore_{it}\)</span>: the <strong>EIU Democracy Index</strong> score for country <span class="math inline">\(i\)</span> in year <span class="math inline">\(t\)</span>.</p></li>
+<li><p><span class="math inline">\(SanctionIntensity_{it} \times DemocracyScore_{it}\)</span>: the interaction term, which tests whether the effect of sanction intensity on corruption varies with the country’s level of democracy.</p></li>
+<li><p><span class="math inline">\(GDPGrowth_{it}\)</span>: annual GDP growth rate for country <span class="math inline">\(i\)</span> in year <span class="math inline">\(t\)</span>.</p></li>
+<li><p><span class="math inline">\(LogGDPpc_{it}\)</span>: the logarithm of GDP per capita for country <span class="math inline">\(i\)</span> in year <span class="math inline">\(t\)</span>, in a logarithm precisely to account for diminishing marginal effects across time of the sanction (countries adapting to other trade channels or redistributing inputs over the year of sanction)</p></li>
+<li><p><span class="math inline">\(PolStability_{it}\)</span>: the <strong>Political Stability and Absence of Violence/Terrorism</strong> score for country <span class="math inline">\(i\)</span> in year <span class="math inline">\(t\)</span>.</p></li>
+<li><p><span class="math inline">\(\varepsilon_{it}\)</span>: the error term.</p></li>
+</ul>
+<p>The marginal effect of sanction intensity on corruption is therefore:</p>
+<p><span class="math display">\[
+\frac{\partial Corruption_{it}}{\partial SanctionIntensity_{it}}
+=
+\beta_1 + \beta_3 DemocracyScore_{it}
+\]</span></p>
+<p>This implies that the effect of sanction intensity is allowed to vary systematically across regime types, which we display in later ggplots below. (the output of the code below includes both the same dummy regression from last time and the second data table is with sanction intensity.</p>
+<div class="cell">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_6xpyh9wgj3jlwoyagbuv = TinyTable.createTableFunctions("tinytable_6xpyh9wgj3jlwoyagbuv");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '22', j: 2 } ], css_id: 'tinytable_css_1d1dw62jht9q73nds8rq',}, 
+          { positions: [ { i: '12', j: 2 } ], css_id: 'tinytable_css_rtx2lhur5fvrq661nj02',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '17', j: 2 }, { i: '18', j: 2 }, { i: '19', j: 2 }, { i: '20', j: 2 }, { i: '21', j: 2 } ], css_id: 'tinytable_css_queslj5i9fiwk2u0wz95',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_s7l3stpaqfj164n9fu3w',}, 
+          { positions: [ { i: '22', j: 1 } ], css_id: 'tinytable_css_ckceu0t8z7dcoh4mwc1g',}, 
+          { positions: [ { i: '12', j: 1 } ], css_id: 'tinytable_css_2a2596kjzqabp3j09i3t',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 }, { i: '18', j: 1 }, { i: '19', j: 1 }, { i: '20', j: 1 }, { i: '21', j: 1 } ], css_id: 'tinytable_css_qkm64mvshzz02df549ij',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_qxf5ywpmcj8708q3hw4m',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_6xpyh9wgj3jlwoyagbuv.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_6xpyh9wgj3jlwoyagbuv td.tinytable_css_1d1dw62jht9q73nds8rq, #tinytable_6xpyh9wgj3jlwoyagbuv th.tinytable_css_1d1dw62jht9q73nds8rq {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_6xpyh9wgj3jlwoyagbuv td.tinytable_css_rtx2lhur5fvrq661nj02, #tinytable_6xpyh9wgj3jlwoyagbuv th.tinytable_css_rtx2lhur5fvrq661nj02 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_6xpyh9wgj3jlwoyagbuv td.tinytable_css_queslj5i9fiwk2u0wz95, #tinytable_6xpyh9wgj3jlwoyagbuv th.tinytable_css_queslj5i9fiwk2u0wz95 { text-align: center }
+    #tinytable_6xpyh9wgj3jlwoyagbuv td.tinytable_css_s7l3stpaqfj164n9fu3w, #tinytable_6xpyh9wgj3jlwoyagbuv th.tinytable_css_s7l3stpaqfj164n9fu3w {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_6xpyh9wgj3jlwoyagbuv td.tinytable_css_ckceu0t8z7dcoh4mwc1g, #tinytable_6xpyh9wgj3jlwoyagbuv th.tinytable_css_ckceu0t8z7dcoh4mwc1g {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_6xpyh9wgj3jlwoyagbuv td.tinytable_css_2a2596kjzqabp3j09i3t, #tinytable_6xpyh9wgj3jlwoyagbuv th.tinytable_css_2a2596kjzqabp3j09i3t {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_6xpyh9wgj3jlwoyagbuv td.tinytable_css_qkm64mvshzz02df549ij, #tinytable_6xpyh9wgj3jlwoyagbuv th.tinytable_css_qkm64mvshzz02df549ij { text-align: left }
+    #tinytable_6xpyh9wgj3jlwoyagbuv td.tinytable_css_qxf5ywpmcj8708q3hw4m, #tinytable_6xpyh9wgj3jlwoyagbuv th.tinytable_css_qxf5ywpmcj8708q3hw4m {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_6xpyh9wgj3jlwoyagbuv" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">(1)</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="2">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">sanction_intensity</td>
+                  <td data-row="1" data-col="2">-0.00025*</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2">(0.00010)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">democracy_score</td>
+                  <td data-row="3" data-col="2">-0.02105***</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(0.00526)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">gdp_growth</td>
+                  <td data-row="5" data-col="2">0.00018</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1"></td>
+                  <td data-row="6" data-col="2">(0.00062)</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="1">log_gdppc</td>
+                  <td data-row="7" data-col="2">0.16399***</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="1"></td>
+                  <td data-row="8" data-col="2">(0.04560)</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="1">pol_stability</td>
+                  <td data-row="9" data-col="2">-0.01423+</td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="1"></td>
+                  <td data-row="10" data-col="2">(0.00820)</td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="1">sanction_intensity × democracy_score</td>
+                  <td data-row="11" data-col="2">0.00003+</td>
+                </tr>
+                <tr>
+                  <td data-row="12" data-col="1"></td>
+                  <td data-row="12" data-col="2">(0.00001)</td>
+                </tr>
+                <tr>
+                  <td data-row="13" data-col="1">Num.Obs.</td>
+                  <td data-row="13" data-col="2">512</td>
+                </tr>
+                <tr>
+                  <td data-row="14" data-col="1">R2</td>
+                  <td data-row="14" data-col="2">0.980</td>
+                </tr>
+                <tr>
+                  <td data-row="15" data-col="1">R2 Adj.</td>
+                  <td data-row="15" data-col="2">0.978</td>
+                </tr>
+                <tr>
+                  <td data-row="16" data-col="1">R2 Within</td>
+                  <td data-row="16" data-col="2">0.079</td>
+                </tr>
+                <tr>
+                  <td data-row="17" data-col="1">R2 Within Adj.</td>
+                  <td data-row="17" data-col="2">0.067</td>
+                </tr>
+                <tr>
+                  <td data-row="18" data-col="1">AIC</td>
+                  <td data-row="18" data-col="2">-1770.0</td>
+                </tr>
+                <tr>
+                  <td data-row="19" data-col="1">BIC</td>
+                  <td data-row="19" data-col="2">-1545.4</td>
+                </tr>
+                <tr>
+                  <td data-row="20" data-col="1">RMSE</td>
+                  <td data-row="20" data-col="2">0.04</td>
+                </tr>
+                <tr>
+                  <td data-row="21" data-col="1">FE: country</td>
+                  <td data-row="21" data-col="2">X</td>
+                </tr>
+                <tr>
+                  <td data-row="22" data-col="1">FE: year</td>
+                  <td data-row="22" data-col="2">X</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="SANCTION-V3_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Now after controlling for country trends of corruption over the duration of inspection (on top of country and year fixed effects), we observe no significant effect of sanctions on corruption:</p>
+<div class="cell">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_113u5k74utoxhq2n1b27 = TinyTable.createTableFunctions("tinytable_113u5k74utoxhq2n1b27");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '22', j: 2 } ], css_id: 'tinytable_css_mmxzu5eoud2scx6pxksz',}, 
+          { positions: [ { i: '12', j: 2 } ], css_id: 'tinytable_css_vk67ovdy3jyifv8dyv1z',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '17', j: 2 }, { i: '18', j: 2 }, { i: '19', j: 2 }, { i: '20', j: 2 }, { i: '21', j: 2 } ], css_id: 'tinytable_css_myn75p6k398z2axsjkbl',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_eimwj95gxw6bql3v4qgw',}, 
+          { positions: [ { i: '22', j: 1 } ], css_id: 'tinytable_css_1r1uwr9wekbrz1cnsira',}, 
+          { positions: [ { i: '12', j: 1 } ], css_id: 'tinytable_css_lwipgp6drvef270l8gfz',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 }, { i: '18', j: 1 }, { i: '19', j: 1 }, { i: '20', j: 1 }, { i: '21', j: 1 } ], css_id: 'tinytable_css_kjrd7sjuunq7a5q4xkij',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_2lq87pkro1hwzacpjdum',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_113u5k74utoxhq2n1b27.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_113u5k74utoxhq2n1b27 td.tinytable_css_mmxzu5eoud2scx6pxksz, #tinytable_113u5k74utoxhq2n1b27 th.tinytable_css_mmxzu5eoud2scx6pxksz {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_113u5k74utoxhq2n1b27 td.tinytable_css_vk67ovdy3jyifv8dyv1z, #tinytable_113u5k74utoxhq2n1b27 th.tinytable_css_vk67ovdy3jyifv8dyv1z {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_113u5k74utoxhq2n1b27 td.tinytable_css_myn75p6k398z2axsjkbl, #tinytable_113u5k74utoxhq2n1b27 th.tinytable_css_myn75p6k398z2axsjkbl { text-align: center }
+    #tinytable_113u5k74utoxhq2n1b27 td.tinytable_css_eimwj95gxw6bql3v4qgw, #tinytable_113u5k74utoxhq2n1b27 th.tinytable_css_eimwj95gxw6bql3v4qgw {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_113u5k74utoxhq2n1b27 td.tinytable_css_1r1uwr9wekbrz1cnsira, #tinytable_113u5k74utoxhq2n1b27 th.tinytable_css_1r1uwr9wekbrz1cnsira {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_113u5k74utoxhq2n1b27 td.tinytable_css_lwipgp6drvef270l8gfz, #tinytable_113u5k74utoxhq2n1b27 th.tinytable_css_lwipgp6drvef270l8gfz {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_113u5k74utoxhq2n1b27 td.tinytable_css_kjrd7sjuunq7a5q4xkij, #tinytable_113u5k74utoxhq2n1b27 th.tinytable_css_kjrd7sjuunq7a5q4xkij { text-align: left }
+    #tinytable_113u5k74utoxhq2n1b27 td.tinytable_css_2lq87pkro1hwzacpjdum, #tinytable_113u5k74utoxhq2n1b27 th.tinytable_css_2lq87pkro1hwzacpjdum {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_113u5k74utoxhq2n1b27" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">(1)</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="2">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">sanction_intensity</td>
+                  <td data-row="1" data-col="2">-0.00015</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2">(0.00010)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">democracy_score</td>
+                  <td data-row="3" data-col="2">0.01861*</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(0.00775)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">gdp_growth</td>
+                  <td data-row="5" data-col="2">0.00030</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1"></td>
+                  <td data-row="6" data-col="2">(0.00058)</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="1">log_gdppc</td>
+                  <td data-row="7" data-col="2">-0.01570</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="1"></td>
+                  <td data-row="8" data-col="2">(0.09310)</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="1">pol_stability</td>
+                  <td data-row="9" data-col="2">-0.00047</td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="1"></td>
+                  <td data-row="10" data-col="2">(0.01031)</td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="1">sanction_intensity × democracy_score</td>
+                  <td data-row="11" data-col="2">0.00001</td>
+                </tr>
+                <tr>
+                  <td data-row="12" data-col="1"></td>
+                  <td data-row="12" data-col="2">(0.00002)</td>
+                </tr>
+                <tr>
+                  <td data-row="13" data-col="1">Num.Obs.</td>
+                  <td data-row="13" data-col="2">512</td>
+                </tr>
+                <tr>
+                  <td data-row="14" data-col="1">R2</td>
+                  <td data-row="14" data-col="2">0.986</td>
+                </tr>
+                <tr>
+                  <td data-row="15" data-col="1">R2 Adj.</td>
+                  <td data-row="15" data-col="2">0.984</td>
+                </tr>
+                <tr>
+                  <td data-row="16" data-col="1">R2 Within</td>
+                  <td data-row="16" data-col="2">0.024</td>
+                </tr>
+                <tr>
+                  <td data-row="17" data-col="1">R2 Within Adj.</td>
+                  <td data-row="17" data-col="2">0.011</td>
+                </tr>
+                <tr>
+                  <td data-row="18" data-col="1">AIC</td>
+                  <td data-row="18" data-col="2">-1894.1</td>
+                </tr>
+                <tr>
+                  <td data-row="19" data-col="1">BIC</td>
+                  <td data-row="19" data-col="2">-1533.8</td>
+                </tr>
+                <tr>
+                  <td data-row="20" data-col="1">RMSE</td>
+                  <td data-row="20" data-col="2">0.03</td>
+                </tr>
+                <tr>
+                  <td data-row="21" data-col="1">FE: country</td>
+                  <td data-row="21" data-col="2">X</td>
+                </tr>
+                <tr>
+                  <td data-row="22" data-col="1">FE: year</td>
+                  <td data-row="22" data-col="2">X</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="SANCTION-V3_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The results show that sanction intensity is INNNNsignificantly related to corruption, but the relationship depends on democracy. The main coefficient is positive and significant, suggesting that in less democratic countries, higher sanction intensity is associated with worse corruption outcomes. The interaction term is negative and significant, meaning this relationship becomes weaker as democracy increases.</p>
+<p>This pattern shows up in the plot as well. At low levels of democracy, sanction intensity is positively associated with corruption, but the effect steadily declines as democracy rises and crosses zero around a score of ~7. In more democratic countries, the relationship turns negative, meaning higher sanction intensity is associated with better corruption control. Overall, the results point to a clear difference across regime types in how sanction intensity relates to corruption.</p>
+<div class="cell">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_c8pi4gg6wk1700swdvys = TinyTable.createTableFunctions("tinytable_c8pi4gg6wk1700swdvys");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '18', j: 2 }, { i: '18', j: 3 }, { i: '18', j: 4 } ], css_id: 'tinytable_css_prku3qooysfjgxzll4xt',}, 
+          { positions: [ { i: '8', j: 2 }, { i: '8', j: 3 }, { i: '8', j: 4 } ], css_id: 'tinytable_css_vz8b8m55jzi6tdejl7es',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '17', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '16', j: 3 }, { i: '17', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 }, { i: '16', j: 4 }, { i: '17', j: 4 } ], css_id: 'tinytable_css_w94nokivos99qalf7jt5',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 } ], css_id: 'tinytable_css_3xjq9vld04z9dt7yv488',}, 
+          { positions: [ { i: '18', j: 1 } ], css_id: 'tinytable_css_j2so1rrtc9j6fd7ukm9e',}, 
+          { positions: [ { i: '8', j: 1 } ], css_id: 'tinytable_css_itydbs2ip0zr6f1urzmp',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 } ], css_id: 'tinytable_css_0xc1tbe3uneidz83ps0s',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_hhk3l8y97v44dhkl6c77',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_c8pi4gg6wk1700swdvys.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_c8pi4gg6wk1700swdvys td.tinytable_css_prku3qooysfjgxzll4xt, #tinytable_c8pi4gg6wk1700swdvys th.tinytable_css_prku3qooysfjgxzll4xt {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_c8pi4gg6wk1700swdvys td.tinytable_css_vz8b8m55jzi6tdejl7es, #tinytable_c8pi4gg6wk1700swdvys th.tinytable_css_vz8b8m55jzi6tdejl7es {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_c8pi4gg6wk1700swdvys td.tinytable_css_w94nokivos99qalf7jt5, #tinytable_c8pi4gg6wk1700swdvys th.tinytable_css_w94nokivos99qalf7jt5 { text-align: center }
+    #tinytable_c8pi4gg6wk1700swdvys td.tinytable_css_3xjq9vld04z9dt7yv488, #tinytable_c8pi4gg6wk1700swdvys th.tinytable_css_3xjq9vld04z9dt7yv488 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_c8pi4gg6wk1700swdvys td.tinytable_css_j2so1rrtc9j6fd7ukm9e, #tinytable_c8pi4gg6wk1700swdvys th.tinytable_css_j2so1rrtc9j6fd7ukm9e {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_c8pi4gg6wk1700swdvys td.tinytable_css_itydbs2ip0zr6f1urzmp, #tinytable_c8pi4gg6wk1700swdvys th.tinytable_css_itydbs2ip0zr6f1urzmp {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_c8pi4gg6wk1700swdvys td.tinytable_css_0xc1tbe3uneidz83ps0s, #tinytable_c8pi4gg6wk1700swdvys th.tinytable_css_0xc1tbe3uneidz83ps0s { text-align: left }
+    #tinytable_c8pi4gg6wk1700swdvys td.tinytable_css_hhk3l8y97v44dhkl6c77, #tinytable_c8pi4gg6wk1700swdvys th.tinytable_css_hhk3l8y97v44dhkl6c77 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_c8pi4gg6wk1700swdvys" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">Low Democracy</th>
+                <th scope="col" data-row="0" data-col="3">Mid Democracy</th>
+                <th scope="col" data-row="0" data-col="4">High Democracy</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="4">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">sanction_intensity</td>
+                  <td data-row="1" data-col="2">-0.00018+</td>
+                  <td data-row="1" data-col="3">-0.00013+</td>
+                  <td data-row="1" data-col="4">-0.00001</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2">(0.00010)</td>
+                  <td data-row="2" data-col="3">(0.00007)</td>
+                  <td data-row="2" data-col="4">(0.00004)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">gdp_growth</td>
+                  <td data-row="3" data-col="2">0.00038</td>
+                  <td data-row="3" data-col="3">-0.00048</td>
+                  <td data-row="3" data-col="4">-0.00054</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(0.00155)</td>
+                  <td data-row="4" data-col="3">(0.00091)</td>
+                  <td data-row="4" data-col="4">(0.00092)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">log_gdppc</td>
+                  <td data-row="5" data-col="2">-0.18081+</td>
+                  <td data-row="5" data-col="3">0.20810**</td>
+                  <td data-row="5" data-col="4">0.17672*</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1"></td>
+                  <td data-row="6" data-col="2">(0.10090)</td>
+                  <td data-row="6" data-col="3">(0.06773)</td>
+                  <td data-row="6" data-col="4">(0.07244)</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="1">pol_stability</td>
+                  <td data-row="7" data-col="2">0.01577</td>
+                  <td data-row="7" data-col="3">-0.02007+</td>
+                  <td data-row="7" data-col="4">0.01988</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="1"></td>
+                  <td data-row="8" data-col="2">(0.02946)</td>
+                  <td data-row="8" data-col="3">(0.01080)</td>
+                  <td data-row="8" data-col="4">(0.01920)</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="1">Num.Obs.</td>
+                  <td data-row="9" data-col="2">46</td>
+                  <td data-row="9" data-col="3">332</td>
+                  <td data-row="9" data-col="4">131</td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="1">R2</td>
+                  <td data-row="10" data-col="2">0.999</td>
+                  <td data-row="10" data-col="3">0.940</td>
+                  <td data-row="10" data-col="4">0.972</td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="1">R2 Adj.</td>
+                  <td data-row="11" data-col="2">0.997</td>
+                  <td data-row="11" data-col="3">0.931</td>
+                  <td data-row="11" data-col="4">0.964</td>
+                </tr>
+                <tr>
+                  <td data-row="12" data-col="1">R2 Within</td>
+                  <td data-row="12" data-col="2">0.340</td>
+                  <td data-row="12" data-col="3">0.045</td>
+                  <td data-row="12" data-col="4">0.093</td>
+                </tr>
+                <tr>
+                  <td data-row="13" data-col="1">R2 Within Adj.</td>
+                  <td data-row="13" data-col="2">0.214</td>
+                  <td data-row="13" data-col="3">0.032</td>
+                  <td data-row="13" data-col="4">0.057</td>
+                </tr>
+                <tr>
+                  <td data-row="14" data-col="1">AIC</td>
+                  <td data-row="14" data-col="2">-221.2</td>
+                  <td data-row="14" data-col="3">-1076.0</td>
+                  <td data-row="14" data-col="4">-506.8</td>
+                </tr>
+                <tr>
+                  <td data-row="15" data-col="1">BIC</td>
+                  <td data-row="15" data-col="2">-175.5</td>
+                  <td data-row="15" data-col="3">-916.1</td>
+                  <td data-row="15" data-col="4">-420.5</td>
+                </tr>
+                <tr>
+                  <td data-row="16" data-col="1">RMSE</td>
+                  <td data-row="16" data-col="2">0.01</td>
+                  <td data-row="16" data-col="3">0.04</td>
+                  <td data-row="16" data-col="4">0.03</td>
+                </tr>
+                <tr>
+                  <td data-row="17" data-col="1">FE: country</td>
+                  <td data-row="17" data-col="2">X</td>
+                  <td data-row="17" data-col="3">X</td>
+                  <td data-row="17" data-col="4">X</td>
+                </tr>
+                <tr>
+                  <td data-row="18" data-col="1">FE: year</td>
+                  <td data-row="18" data-col="2">X</td>
+                  <td data-row="18" data-col="3">X</td>
+                  <td data-row="18" data-col="4">X</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<p>The results show clear heterogeneity across regime types. In low democracy countries, the coefficient on sanction intensity is positive but statistically insignificant (p = 0.44), suggesting no precisely estimated effect in this specification. However, it is important to note that this differs from earlier results, where the effect was statistically significant. This change is largely driven by restricting the sample to countries that are ever sanctioned, which removes many zero-intensity observations and reduces within-country variation in sanction exposure, particularly in low-democracy regimes where sanctions tend to be more persistent. As a result, the increase in standard errors likely reflects a loss of identifying variation rather than a true absence of effect.</p>
+<p>A similar pattern holds for mid-level democracies, where the coefficient remains positive but insignificant (p = 0.29), again indicating no strong evidence of a systematic relationship in these regimes. In contrast, for high democracy countries, the coefficient is negative and statistically significant at the 5% level (p ≈ 0.04), implying that increases in sanction intensity are associated with improvements in corruption control (i.e., lower corruption). Taken together, these results suggest that the impact of sanctions depends heavily on institutional context: while the positive relationship between sanctions and corruption in less democratic regimes becomes less precisely estimated after restricting the sample, the corruption-reducing effect in democracies remains robust, consistent with the idea that stronger institutions can channel external pressure into reform rather than rent-seeking behavior.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="SANCTION-V3_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="b-research-design-placebo-test" class="level2">
+<h2 class="anchored" data-anchor-id="b-research-design-placebo-test">(4b) Research Design (Placebo Test)</h2>
+<div class="cell">
+<div class="cell-output-display">
+<!-- preamble start -->
+
+    <script src="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.js"></script>
+
+    <script>
+      // Create table-specific functions using external factory
+      const tableFns_lte194k102fxqbu6bl06 = TinyTable.createTableFunctions("tinytable_lte194k102fxqbu6bl06");
+      // tinytable span after
+      window.addEventListener('load', function () {
+          var cellsToStyle = [
+            // tinytable style arrays after
+          { positions: [ { i: '22', j: 2 } ], css_id: 'tinytable_css_9ee0k034wmsdrq756b76',}, 
+          { positions: [ { i: '12', j: 2 } ], css_id: 'tinytable_css_ftju43ke7g7y6zsw8z91',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '17', j: 2 }, { i: '18', j: 2 }, { i: '19', j: 2 }, { i: '20', j: 2 }, { i: '21', j: 2 } ], css_id: 'tinytable_css_oiwlyuhacrgkix4qkjqd',}, 
+          { positions: [ { i: '0', j: 2 } ], css_id: 'tinytable_css_hlj2s12disbbgpbhgpil',}, 
+          { positions: [ { i: '22', j: 1 } ], css_id: 'tinytable_css_pxn5mca6s2ucnwux5iv8',}, 
+          { positions: [ { i: '12', j: 1 } ], css_id: 'tinytable_css_s7cbp0nkjrsvnt7z0ln5',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 }, { i: '18', j: 1 }, { i: '19', j: 1 }, { i: '20', j: 1 }, { i: '21', j: 1 } ], css_id: 'tinytable_css_buov5xlytlmlbiwbov6v',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_lc3p3ioujm18n9rd87p2',}, 
+          ];
+
+          // Loop over the arrays to style the cells
+          cellsToStyle.forEach(function (group) {
+              group.positions.forEach(function (cell) {
+                  tableFns_lte194k102fxqbu6bl06.styleCell(cell.i, cell.j, group.css_id);
+              });
+          });
+      });
+    </script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
+    <style>
+    /* tinytable css entries after */
+    #tinytable_lte194k102fxqbu6bl06 td.tinytable_css_9ee0k034wmsdrq756b76, #tinytable_lte194k102fxqbu6bl06 th.tinytable_css_9ee0k034wmsdrq756b76 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_lte194k102fxqbu6bl06 td.tinytable_css_ftju43ke7g7y6zsw8z91, #tinytable_lte194k102fxqbu6bl06 th.tinytable_css_ftju43ke7g7y6zsw8z91 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_lte194k102fxqbu6bl06 td.tinytable_css_oiwlyuhacrgkix4qkjqd, #tinytable_lte194k102fxqbu6bl06 th.tinytable_css_oiwlyuhacrgkix4qkjqd { text-align: center }
+    #tinytable_lte194k102fxqbu6bl06 td.tinytable_css_hlj2s12disbbgpbhgpil, #tinytable_lte194k102fxqbu6bl06 th.tinytable_css_hlj2s12disbbgpbhgpil {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center }
+    #tinytable_lte194k102fxqbu6bl06 td.tinytable_css_pxn5mca6s2ucnwux5iv8, #tinytable_lte194k102fxqbu6bl06 th.tinytable_css_pxn5mca6s2ucnwux5iv8 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.1em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_lte194k102fxqbu6bl06 td.tinytable_css_s7cbp0nkjrsvnt7z0ln5, #tinytable_lte194k102fxqbu6bl06 th.tinytable_css_s7cbp0nkjrsvnt7z0ln5 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    #tinytable_lte194k102fxqbu6bl06 td.tinytable_css_buov5xlytlmlbiwbov6v, #tinytable_lte194k102fxqbu6bl06 th.tinytable_css_buov5xlytlmlbiwbov6v { text-align: left }
+    #tinytable_lte194k102fxqbu6bl06 td.tinytable_css_lc3p3ioujm18n9rd87p2, #tinytable_lte194k102fxqbu6bl06 th.tinytable_css_lc3p3ioujm18n9rd87p2 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left }
+    </style>
+    <div class="container">
+      <table class="tinytable" id="tinytable_lte194k102fxqbu6bl06" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+        
+        <thead>
+              <tr>
+                <th scope="col" data-row="0" data-col="1"> </th>
+                <th scope="col" data-row="0" data-col="2">(1)</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan="2">+ p &lt; 0.1, * p &lt; 0.05, ** p &lt; 0.01, *** p &lt; 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td data-row="1" data-col="1">sanction_intensity_lead2</td>
+                  <td data-row="1" data-col="2">-0.00017+</td>
+                </tr>
+                <tr>
+                  <td data-row="2" data-col="1"></td>
+                  <td data-row="2" data-col="2">(0.00010)</td>
+                </tr>
+                <tr>
+                  <td data-row="3" data-col="1">democracy_score</td>
+                  <td data-row="3" data-col="2">-0.01791**</td>
+                </tr>
+                <tr>
+                  <td data-row="4" data-col="1"></td>
+                  <td data-row="4" data-col="2">(0.00569)</td>
+                </tr>
+                <tr>
+                  <td data-row="5" data-col="1">gdp_growth</td>
+                  <td data-row="5" data-col="2">-0.00001</td>
+                </tr>
+                <tr>
+                  <td data-row="6" data-col="1"></td>
+                  <td data-row="6" data-col="2">(0.00056)</td>
+                </tr>
+                <tr>
+                  <td data-row="7" data-col="1">log_gdppc</td>
+                  <td data-row="7" data-col="2">0.15201***</td>
+                </tr>
+                <tr>
+                  <td data-row="8" data-col="1"></td>
+                  <td data-row="8" data-col="2">(0.04407)</td>
+                </tr>
+                <tr>
+                  <td data-row="9" data-col="1">pol_stability</td>
+                  <td data-row="9" data-col="2">-0.00903</td>
+                </tr>
+                <tr>
+                  <td data-row="10" data-col="1"></td>
+                  <td data-row="10" data-col="2">(0.00770)</td>
+                </tr>
+                <tr>
+                  <td data-row="11" data-col="1">sanction_intensity_lead2 × democracy_score</td>
+                  <td data-row="11" data-col="2">0.00002</td>
+                </tr>
+                <tr>
+                  <td data-row="12" data-col="1"></td>
+                  <td data-row="12" data-col="2">(0.00001)</td>
+                </tr>
+                <tr>
+                  <td data-row="13" data-col="1">Num.Obs.</td>
+                  <td data-row="13" data-col="2">448</td>
+                </tr>
+                <tr>
+                  <td data-row="14" data-col="1">R2</td>
+                  <td data-row="14" data-col="2">0.986</td>
+                </tr>
+                <tr>
+                  <td data-row="15" data-col="1">R2 Adj.</td>
+                  <td data-row="15" data-col="2">0.985</td>
+                </tr>
+                <tr>
+                  <td data-row="16" data-col="1">R2 Within</td>
+                  <td data-row="16" data-col="2">0.070</td>
+                </tr>
+                <tr>
+                  <td data-row="17" data-col="1">R2 Within Adj.</td>
+                  <td data-row="17" data-col="2">0.056</td>
+                </tr>
+                <tr>
+                  <td data-row="18" data-col="1">AIC</td>
+                  <td data-row="18" data-col="2">-1701.4</td>
+                </tr>
+                <tr>
+                  <td data-row="19" data-col="1">BIC</td>
+                  <td data-row="19" data-col="2">-1492.1</td>
+                </tr>
+                <tr>
+                  <td data-row="20" data-col="1">RMSE</td>
+                  <td data-row="20" data-col="2">0.03</td>
+                </tr>
+                <tr>
+                  <td data-row="21" data-col="1">FE: country</td>
+                  <td data-row="21" data-col="2">X</td>
+                </tr>
+                <tr>
+                  <td data-row="22" data-col="1">FE: year</td>
+                  <td data-row="22" data-col="2">X</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+<!-- hack to avoid NA insertion in last line -->
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="SANCTION-V3_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<hr>
+<p>The placebo results provide little evidence of reverse causality. While there is weak statistical significance at very low levels of democracy (only at the 10% level), the confidence intervals are much wider and include zero for most of the democracy range. Compared to the main results, where the effects were clearly significant and precisely estimated, this placebo plot shows much less consistent and much noisier relationships.</p>
+<p>This difference is important in the sense that If sanctions were simply responding to already rising corruption, we would expect to see a similar strong and significant pattern when predicting <em>past</em> corruption, but we don’t. Instead, the lack of strong significance and the large overlap with zero suggest that future sanction intensity is not systematically driven by prior corruption levels. Overall, this weak and imprecise relationship in the placebo test supports the interpretation that the main results are not just picking up reverse causality, but instead reflect a more meaningful relationship between sanction intensity and corruption.</p>
+<pre><code>## References</code></pre>
+
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-crozet2020" class="csl-entry" role="listitem">
+Crozet, Matthieu, and Julian Hinz. 2020. <span>“Friendly Fire: The Trade Impact of the Russia Sanctions and Counter-Sanctions.”</span> <em>Economic Policy</em>.
+</div>
+<div id="ref-dreher2017" class="csl-entry" role="listitem">
+Dreher, Axel, Martin Gassebner, and Lars-H. R. Siemers. 2017. <span>“Does Sanctions Cause Corruption?”</span> <em>Economics Letters</em>.
+</div>
+<div id="ref-felbermayr2020" class="csl-entry" role="listitem">
+Felbermayr, Gabriel, Aleksandra Kirilakha, Constantinos Syropoulos, Erdal Yalcin, and Yoto Yotov. 2020. <span>“The Global Sanctions Data Base.”</span> <em>European Economic Review</em>.
+</div>
+<div id="ref-hufbauer2007" class="csl-entry" role="listitem">
+Hufbauer, Gary Clyde, Jeffrey J. Schott, Kimberly Ann Elliott, and Barbara Oegg. 2007. <em>Economic Sanctions Reconsidered</em>. Peterson Institute for International Economics.
+</div>
+<div id="ref-morgan2014" class="csl-entry" role="listitem">
+Morgan, T. Clifton, Navin Bapat, and Yoshiharu Kobayashi. 2014. <span>“Threat and Imposition of Economic Sanctions 1945–2005.”</span> <em>Conflict Management and Peace Science</em>.
+</div>
+<div id="ref-neuenkirch2016" class="csl-entry" role="listitem">
+Neuenkirch, Matthias, and Florian Neumeier. 2016. <span>“The Impact of US Sanctions on Poverty.”</span> <em>Journal of Development Economics</em>.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

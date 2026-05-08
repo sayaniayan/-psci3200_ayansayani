@@ -1,4 +1,4 @@
-project: 
+project:
   type: website
   output-dir: docs
 
@@ -8,5 +8,10 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: April16-Final Presentation Research Design (1).html
-        text: Sanction Intensity Analysis
+      - href: "SANCTION V3.html"
+        text: Research
+
+format:
+  html:
+    theme: cosmo
+    toc: true
