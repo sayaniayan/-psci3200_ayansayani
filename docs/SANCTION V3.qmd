@@ -1,0 +1,717 @@
+---
+title: "Final Presentation Research Design"
+format: html
+editor: visual
+bibliography: /Users/ayansayani/Documents/-psci3200_ayansayani/references.bib
+warning: false
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+## (1) Introduction
+
+**Do economic sanctions imposed by the United States from 2003 to 2023 affect the level of corruption in recipient countries?**
+
+**(1b)** Why am I interested in this question? Well, for many reasons. But to be concise, growing up I had several chats in my household with my Dad who always spoke of corruption in my home country of Pakistan. And I always wondered why people’s attitudes towards something that was so bad in the US were so different abroad, and if it is so bad for one’s country as my Dad said it was, why do countries keep doing it? This led me to become very interested in geopolitics, why it seems that everyone hates the IMF for their loans, and how this ties into micro-level decisions based on social norms and moral considerations. So, now I am studying behavioral economics in Wharton to understand the phenomenon of corruption more precisely. Especially after talking to some professors here who have talked about how corruption on a large scale has been ignored by The World Bank in terms of the way it is treated outside of the realm of development, yet is so obviously important to solving. I’m particularly interested in the U.S. Sanctions because I want to see if the geopolitical tensions that have first established and perpetuated institutions to create outcomes of corruption and weak institutions live on as a sort of poverty trap through sanctions. FOr example, corruption and institutional weakness may lead to ill actions that are sanctioned, and I am wondering if those sanctions only depress a population more to do worse things/be more corrupt, thus in a way only perpetuating the issue. I think this would be very interesting to understand and possibly explore as a development trap.
+
+Existing research suggests supporting results to this possibility: that economic sanctions tend to increase corruption in target countries, primarily by distorting economic activity and expanding opportunities for rent-seeking. For example, Dreher, Gassebner, and Siemers (2017) [@dreher2017] find that sanctions are associated with significantly higher levels of corruption, particularly in autocratic regimes. Using panel data with country and year fixed effects[@dreher2017], they show that sanctions restrict formal economic channels, which increases scarcity and discretionary power among officials, and thus fostering bribery and informal exchange. Similarly, Neuenkirch and Neumeier (2016) [@neuenkirch2016] demonstrate that U.S. sanctions lead to substantial declines in economic growth in targeted countries. While their study focuses on macroeconomic outcomes rather than corruption directly, it provides an important mechanism that economic contraction weakens institutions and pushes economic activity into informal sectors, conditions that are strongly associated with higher corruption. Therefore, these studies show that sanctions may unintentionally exacerbate corruption by undermining formal markets and institutional capacity, even if their primary goal is to induce political, economic, or tension alleviation/reform. 
+
+NEW ADDITIONS:
+
+As I mentioned earlier, A key limitation in this literature though is how sanctions are actually measured. Most of these papers, including Dreher, Gassebner, and Siemers (2017)[@dreher2017], [@hufbauer2007] [@morgan2014] just use a binary indicator for whether a country is sanctioned or not, which basically treats all sanctions as the same regardless of how strong they are or how long they last. Even in other major datasets and papers like Hufbauer et al. (2007) or Morgan, Bapat, and Kobayashi (2014), sanctions are usually categorized by type or presence, not really by how much they actually affect the economy. At the same time, these studies tend to use similar controls like GDP per capita, economic growth, trade openness, and political stability, which is good for isolating institutional effects, but the main treatment itself is still pretty blunt. So while we know sanctions matter, we dont really know how differences in their strength translate into corruption outcomes, which seems like a pretty big gap.
+
+There is some work in related areas that tries to get at this more directly, especially in the sanctions and trade literature. For example, Crozet and Hinz (2020) and Felbermayr et al. (2020)[@crozet2020; @felbermayr2020] actually measure sanctions in terms of trade losses or reductions in flows, and some papers also look at duration or financial restrictions as a proxy for how intense a sanction is. But this kind of approach has not really been applied to corruption specifically. In particular, I couldnt really find work that builds a continuous sanction intensity measure that combines exposure and duration when studying corruption outcomes.
+
+That’s what I try to do here abd whyh I think this intensity measure is novel for corruption effects,, by constructing an index that scales sanctions by trade openness and how long they last. This lets me move beyond just asking whether sanctions increase corruption, and instead look at whether stronger sanctions actually make things worse, and how that differs across regime types. So its not just a replication of existing work, but more of an extension that tries to get at the mechanism in a more precise way, which is pretty cool I would say. I also hope to add in the more precise controls like trade losses and reducntions in flows, and other proxy controls as mentioned regarding Crozet and Hinz's work.
+
+## (2) Theory and Hypotheses
+
+I shall test for two hypothesis: 
+
+**i) U.S. economic sanctions on average increase corruption from 2003-2023 in recipient countries.**
+
+**ii)) US economic sanctions will increase corruption more strongly in autocracies and weaker or negative effects in democracies.**
+
+The impact of economic sanctions on corruption does not have a single clear mechanism, either intuitively or empirically. Existing research suggests two competing pathways. In cash-strapped and institutionally weak countries, sanctions may worsen corruption by reducing trade and economic growth, shifting activity into informal and illicit markets (Afesorgbor and Mahadevan 2016; Neuenkirch and Neumeier 2016)[@neuenkirch2016]. Under these conditions, political elites retain centralized control over scarce resources such as import licenses and foreign currency, allowing them to distribute access selectively in exchange for bribes. Empirical evidence supports this mechanism, showing that sanctions are associated with higher corruption levels, particularly in countries with weaker institutional constraints (Dreher, Gassebner, and Siemers 2017)[@dreher2017]. Sanctions also often generate evasion networks reliant on bribery and informal exchange, further embedding corruption into state structures (Early 2015). At the same time, democratic systems may react differently. Where institutions impose greater accountability and transparency, sanctions can trigger reforms, external monitoring, and tighter oversight. Recent research finds that under these conditions corruption can decline over time (Gutmann, Langer, and Neumeier 2024).
+
+However, much of the existing literature treats sanctions as binary, measuring only whether a sanction exists in a given country-year[@dreher2017], [@hufbauer2007] [@morgan2014]. I extend this approach by focusing on sanction intensity rather than sanction presence alone. My argument is that increases in sanction intensity should increase corruption more strongly in autocracies than in democracies because intensity better captures the extent to which sanctions actually disrupt the economy. A marginal increase in sanction intensity, through greater trade exposure or longer duration, should amplify scarcity and economic distortions more severely in autocratic systems, where weaker institutions and lower oversight allow officials to exploit these conditions through rent-seeking, informal markets, and untracked transactions. Democratic regimes, by contrast, possess stronger institutional checks, greater transparency, and higher accountability, which may dampen how much these economic shocks translate into corruption and, in some cases, may even reduce corruption through reforms or tighter enforcement. Thus, the same increase in sanction intensity should have a smaller or more muted effect in democracies. To address reverse causality, I also implement placebo tests using led sanctions as a predictor to test whether sanctions are simply responding to already rising corruption levels rather than causing them. Therefore, the main hypothesis of interest is the second hypothesis on heterogeneous regime-type effects of sanctions on corruption.
+
+## (3) Research Design
+
+### Data
+
+This project uses a country-year panel from 2003 to 2023 to estimate the relationship between unilateral U.S. trade sanctions and political corruption. The unit of observation is the country-year. The outcome variable, sanctions variables, and country-level covariates are drawn from cross-national datasets that provide annual coverage across most sovereign states.
+
+**V-Dem Political Corruption Index** The dependent variable of corruption is pulled from the V-Dem Political Corruption Index (v2x_corr column). This index measures the pervasiveness of political corruption across multiple state institutions rather than relying on a single perception-based corruption score. V-Dem constructs the index from indicators covering corrupt activity in the legislature, judiciary, executive, and public sector. Its components include legislature corrupt activities (v2lgcrrpt), judicial corruption decisions (v2jucorrdc), executive corruption (v2x_execorr), and public-sector corruption (v2x_pubcorr). The executive corruption component includes executive bribery, corrupt exchanges, embezzlement, and theft; the public-sector corruption component includes public-sector corrupt exchanges and public-sector theft. This composition makes the index appropriate for this study because the theorized mechanisms linking sanctions to corruption operate through political and administrative channels, including elite rent-seeking, discretionary enforcement, smuggling, patronage, and weakened institutional oversight. V-Dem’s country-year dataset also provides long-run annual coverage and uses expert-coded indicators aggregated through its measurement model, which is useful for cross-national panel analysis.
+
+**US-Only Trade Sanctions (Global Sanctions Database)**[@felbermayr2020]**:** The main independent variable is a U.S.-only trade sanctions indicator, constructed from the Global Sanctions Data Base. The GSDB records sanctions by sender, target, year, sanction type, political objective, and success. I restrict the sanctions data to cases where the United States is the sole sender to form the treatment, or the country has been sanctioned in the past by any actor to eliminate 0-heavy sample. I also hone my sample down to where the sanction type is trade-related, as trade sanctions and resource-related channels are my mechanisms of interest, especially in their plausible relation to rent-seeking and corruption. The GSDB is well suited for this construction because it explicitly distinguishes bilateral, multilateral, and plurilateral sanctions and classifies sanctions by type, including trade sanctions, financial sanctions, travel restrictions, arms sanctions, military assistance sanctions, and other sanctions.
+
+**EIU Democracy Index:** Regime type is measured using the Economist Intelligence Unit Democracy Index, which scores countries from 0 to 10 using 60 indicators across five categories: electoral process and pluralism, functioning of government, political participation, political culture, and civil liberties. This provides an annual measure of democratic openness and institutional context, an important control and mechanism for heterogenous effects of sanctions on corruption.
+
+**GDP Growth & Log GDP per Capita (World Bank WDI):** Economic conditions are measured using World Bank World Development Indicators. GDP growth captures annual changes in output, while log GDP per capita captures development level. GDP per capita is logged because income is highly skewed across countries, and the transformation reduces the influence of extreme high-income observations.
+
+**Trade Openness (World Bank WDI):** Trade exposure is measured as a component into Sanction Intensity through the variable OneYearLaggedTradeOpenness, based on the WDI trade openness variable: exports plus imports of goods and services as a percentage of GDP.
+
+**Political Stability (World Bank WGI):** Political instability is measured using the World Bank Political Stability and Absence of Violence/Terrorism estimate. This variable captures perceived risks of government destabilization and politically motivated violence, including terrorism. It is used as an annual measure of domestic instability and security risk.It is a composite perception-based index built from expert assessments and surveys. It takes into account risks like political violence, terrorism, armed conflict, coups, social unrest, government collapse, ethnic/religious tensions, and internal/external conflict risks. Given it's perception oriented nature, there may be concerns in its subjectivity. This concern is especially salient for terrorism, since terrorist attacks are designed to generate collective fear, however perception of a dangerous terrorism environment can itself create conditions conducive to corruption by increasing discretionary security spending, weakening oversight, and expanding emergency executive authority (Transparency International, 2019).
+
+Overall, the dataset is constructed to remain consistent with the recent empirical literature on sanctions and corruption, which relies on cross-national sanctions data, V-Dem-based corruption outcomes, and standard country-year political and economic covariates to estimate sanction effects. (See Gutmann, Langer, and Neuenkirch, who use sanctions data alongside V-Dem corruption outcomes in recent work on sanctions and corruption; see also Felbermayr et al. for usage of the Global Sanctions Data Base.)
+
+### Variables
+
+The data mentioned renders into the variables constructed as follows: My dependent variable, Corruption\_{it}, is measured using V-Dem’s Political Corruption Index (v2x_corr), which captures corruption across the executive, legislature, judiciary, and public sector. This aligns closely with the project’s focus on elite rent-seeking, patronage networks, and institutional misuse of power rather than only petty bribery. My main independent variable, SanctionIntensity\_{it}, is a one-year-lagged U.S.-only trade sanction indicator from the Global Sanctions Database (GSDB). I use two sanctions measures. The first is SanctionDummy\_{it}, a binary indicator equal to one for country-years in which a U.S.-only trade sanction is active and zero otherwise. The second is SanctionIntensity\_{it}, which is designed to capture both cumulative sanctions exposure and a country’s susceptibility to sanctions pressure. I construct this measure by identifying the start year of each sanction episode and calculating the number of consecutive years the sanction remains active in each country-year, producing a Duration\_{it} component. I then define SanctionIntensity\_{it} as the lagged SanctionDummy\_{it} multiplied by OneYearLaggedTradeOpenness\_{it} and logged Duration\_{it}. Using OneYearLaggedTradeOpenness\_{it} avoids incorporating contemporaneous trade flows already affected by sanctions themselves within the sanction intensity measure (and thus avoiding a post-treatment control/bad control problem), while the logged duration term captures diminishing marginal effects from prolonged sanctions exposure.s extends past recent sanctions literature, which commonly relies on binary sanction indicators without incorporating exposure, persistence, or lifecycle effects. However, it shall be noted that sanction intensity as a measure is picking up speed as a measure in the literature not related to corruption, thus it holds as a viable apprpach towards adding more nuance to a sanction and its impacts.
+
+I include DemocracyScore\_{it} to test regime-type heterogeneity, since recent literature suggests sanctions may operate differently across democratic and autocratic accountability structures. GDPGrowth\_{it} and LogGDPpc\_{it} control for economic shocks and development levels, both of which are consistently associated with corruption and institutional quality in the broader literature and are commonly included in recent sanctions-corruption work. I also include PolStability\_{it} to account for violence, terrorism risk, coups, and internal instability, since these factors may independently influence both sanction selection and corruption outcomes. Country fixed effects, represented by \alpha\_i, absorb time-invariant country characteristics, while year fixed effects, represented by \delta\_t, absorb common global shocks affecting all countries in a given year. Country-specific linear time trends are later additionally included as a robustness check for differential pre-existing corruption trajectories across countries over time.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+# Load necessary libraries
+library(tidyverse)
+library(fixest)
+library(modelsummary)
+
+setwd("/Users/ayansayani/Documents/-psci3200_ayansayani")
+
+# 1. Load the datasets
+# Files should be in the same project folder as this .qmd
+sanctions_raw  <- read_csv("sanctions.csv")
+trade_raw      <- read_csv("trade.csv")
+democracy_raw  <- read_csv("democracy.csv")
+corpol_raw     <- read_csv("corpol.csv")
+growthgdp_raw  <- read_csv("growthgdp.csv")
+vdem_raw       <- readRDS("VDPCI.rds")
+
+# --- Helper Function to Clean World Bank style Wide Data ---
+clean_wb_data <- function(df, value_name = NULL) {
+  df %>%
+    pivot_longer(
+      cols = contains("[YR"),
+      names_to = "year",
+      values_to = "value"
+    ) %>%
+    mutate(
+      year = as.numeric(str_extract(year, "\\d{4}")),
+      value = as.numeric(ifelse(value == "..", NA, value))
+    ) %>%
+    select(`Country Name`, year, `Series Name`, value) %>%
+    rename(country = `Country Name`)
+}
+
+# 2. V-Dem Political Corruption Index as dependent variable
+# Higher values = more political corruption
+vdem_corruption <- vdem_raw %>%
+  select(
+    country = country_name,
+    year,
+    corruption = v2x_corr
+  ) %>%
+  filter(year >= 2003, year <= 2023) %>%
+  drop_na(corruption)
+
+# 3. Political Stability control from WGI
+# We still use WGI for political stability, but not for the corruption outcome
+pol_stability_long <- clean_wb_data(corpol_raw) %>%
+  pivot_wider(
+    names_from = `Series Name`,
+    values_from = "value",
+    values_fn = mean
+  ) %>%
+  rename(pol_stability = contains("Political Stability")) %>%
+  select(country, year, pol_stability)
+
+# 4. GDP Growth and Log GDP per capita
+growth_long <- clean_wb_data(growthgdp_raw) %>%
+  pivot_wider(
+    names_from = `Series Name`,
+    values_from = "value",
+    values_fn = mean
+  ) %>%
+  rename(
+    gdp_growth = "GDP growth (annual %)",
+    log_gdppc = "loggdppc"
+  )
+
+# 5. Trade Openness
+trade_long <- clean_wb_data(trade_raw) %>%
+  select(country, year, trade_openness = value)
+
+# 6. Democracy Score
+democracy_long <- democracy_raw %>%
+  pivot_longer(
+    cols = matches("^\\d{4}$"),
+    names_to = "year",
+    values_to = "democracy_score"
+  ) %>%
+  mutate(
+    year = as.numeric(year),
+    democracy_score = as.numeric(democracy_score)
+  ) %>%
+  rename(country = REF_AREA_LABEL) %>%
+  select(country, year, democracy_score)
+
+# 7. Process Sanctions: Define US-only trade sanctions
+sanctions_long <- sanctions_raw %>%
+  mutate(
+    end = ifelse(end == "ongoing", 2023, end),
+    end = as.numeric(end),
+    begin = as.numeric(begin)
+  ) %>%
+  filter(!is.na(begin) & !is.na(end)) %>%
+  rowwise() %>%
+  mutate(year = list(seq(begin, end))) %>%
+  unnest(year) %>%
+  ungroup() %>%
+  rename(country = sanctioned_state)
+
+# 8. Identify countries ever sanctioned by ANY sender during the analysis period
+# This defines the sample, not the treatment
+ever_sanctioned_countries <- sanctions_long %>%
+  filter(year >= 2003, year <= 2023) %>%
+  distinct(country)
+
+# 9. Identify years where other countries, not the US, are sanctioning
+others_sanctioning <- sanctions_long %>%
+  filter(sanctioning_state != "United States") %>%
+  distinct(country, year) %>%
+  mutate(other_present = 1)
+
+# 10. Identify years with US trade sanctions specifically
+us_trade_active <- sanctions_long %>%
+  filter(sanctioning_state == "United States", trade == 1) %>%
+  distinct(country, year, begin) %>%
+  mutate(us_trade_present = 1)
+
+# 11. Construct the sanction dummy (1-year lagged)
+# Treatment in year t reflects sanctions imposed in year t-1
+
+sanction_dummy_df <- us_trade_active %>%
+  left_join(others_sanctioning, by = c("country", "year")) %>%
+  mutate(
+    sanction_dummy = ifelse(us_trade_present == 1 & is.na(other_present), 1, 0)
+  ) %>%
+  group_by(country, year) %>%
+  summarise(
+    sanction_dummy = max(sanction_dummy),
+    sanction_start = min(begin),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    duration = ifelse(sanction_dummy == 1, year - sanction_start + 1, 0),
+    
+    # LAG EVERYTHING BY 1 YEAR
+    year = year + 1
+  ) %>%
+  select(country, year, sanction_dummy, duration)
+
+
+#This creates the sanction_dummy variable lagged a year by pulling the first sanctioned year, and creates lagged trade openness)
+first_sanction_year <- sanction_dummy_df %>%
+  filter(sanction_dummy == 1) %>%
+  group_by(country) %>%
+  summarise(first_sanction_year = min(year), .groups = "drop")
+
+pre_trade <- trade_long %>%
+  inner_join(first_sanction_year, by = "country") %>%
+  filter(year == first_sanction_year - 1) %>%
+  select(country, pre_trade_openness = trade_openness)
+
+# 12. Merge all data into master panel
+# Sample = countries ever sanctioned by any sender from 2003 to 2023
+# Treatment = US-only trade sanction country-years
+master_df <- vdem_corruption %>%
+  semi_join(ever_sanctioned_countries, by = "country") %>%
+  inner_join(growth_long, by = c("country", "year")) %>%
+  inner_join(trade_long, by = c("country", "year")) %>%
+  inner_join(democracy_long, by = c("country", "year")) %>%
+  inner_join(pol_stability_long, by = c("country", "year")) %>%
+  left_join(sanction_dummy_df, by = c("country", "year")) %>%
+  left_join(pre_trade, by = "country") %>%
+  mutate(
+    sanction_dummy = replace_na(sanction_dummy, 0),
+    duration = replace_na(duration, 0),
+    sanction_intensity = sanction_dummy * pre_trade_openness * log(1 + duration)
+  )
+
+# Export current analysis dataset for inspection
+#write_csv(master_df, "master_df_current.csv")
+
+# Raw bivariate regressions
+raw_dummy <- lm(
+  corruption ~ sanction_dummy,
+  data = master_df
+)
+
+raw_intensity <- lm(
+  corruption ~ sanction_intensity,
+  data = master_df
+)
+
+
+
+```
+
+The mean, median, mode, range and standard deviation of the variables are summarized in the table below (Figure 3.1)
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+library(dplyr)
+library(tidyr)
+
+summary_table_clean <- master_df %>%
+  summarise(
+    corruption_mean = mean(corruption, na.rm = TRUE),
+    corruption_min  = min(corruption, na.rm = TRUE),
+    corruption_max  = max(corruption, na.rm = TRUE),
+    corruption_sd   = sd(corruption, na.rm = TRUE),
+    
+    sanction_dummy_mean = mean(sanction_dummy, na.rm = TRUE),
+    sanction_dummy_min  = min(sanction_dummy, na.rm = TRUE),
+    sanction_dummy_max  = max(sanction_dummy, na.rm = TRUE),
+    sanction_dummy_sd   = sd(sanction_dummy, na.rm = TRUE),
+    
+    sanction_intensity_mean = mean(sanction_intensity, na.rm = TRUE),
+    sanction_intensity_min  = min(sanction_intensity, na.rm = TRUE),
+    sanction_intensity_max  = max(sanction_intensity, na.rm = TRUE),
+    sanction_intensity_sd   = sd(sanction_intensity, na.rm = TRUE),
+    
+    duration_mean = mean(duration, na.rm = TRUE),
+    duration_min  = min(duration, na.rm = TRUE),
+    duration_max  = max(duration, na.rm = TRUE),
+    duration_sd   = sd(duration, na.rm = TRUE),
+    
+    democracy_score_mean = mean(democracy_score, na.rm = TRUE),
+    democracy_score_min  = min(democracy_score, na.rm = TRUE),
+    democracy_score_max  = max(democracy_score, na.rm = TRUE),
+    democracy_score_sd   = sd(democracy_score, na.rm = TRUE), 
+    
+    gdp_growth_mean = mean(gdp_growth, na.rm = TRUE),
+    gdp_growth_min  = min(gdp_growth, na.rm = TRUE),
+    gdp_growth_max  = max(gdp_growth, na.rm = TRUE),
+    gdp_growth_sd   = sd(gdp_growth, na.rm = TRUE),
+    
+    log_gdppc_mean = mean(log_gdppc, na.rm = TRUE),
+    log_gdppc_min  = min(log_gdppc, na.rm = TRUE),
+    log_gdppc_max  = max(log_gdppc, na.rm = TRUE),
+    log_gdppc_sd   = sd(log_gdppc, na.rm = TRUE),
+    
+    pol_stability_mean = mean(pol_stability, na.rm = TRUE),
+    pol_stability_min  = min(pol_stability, na.rm = TRUE),
+    pol_stability_max  = max(pol_stability, na.rm = TRUE),
+    pol_stability_sd   = sd(pol_stability, na.rm = TRUE),
+    
+    trade_openness_mean = mean(trade_openness, na.rm = TRUE),
+    trade_openness_min  = min(trade_openness, na.rm = TRUE),
+    trade_openness_max  = max(trade_openness, na.rm = TRUE),
+    trade_openness_sd   = sd(trade_openness, na.rm = TRUE),
+    
+    pre_trade_openness_mean = mean(pre_trade_openness, na.rm = TRUE),
+    pre_trade_openness_min  = min(pre_trade_openness, na.rm = TRUE),
+    pre_trade_openness_max  = max(pre_trade_openness, na.rm = TRUE),
+    pre_trade_openness_sd   = sd(pre_trade_openness, na.rm = TRUE)
+  ) %>%
+  pivot_longer(
+    everything(),
+    names_to = c("Variable", ".value"),
+    names_pattern = "(.*)_(mean|min|max|sd)"
+  ) %>%
+  mutate(range = max - min) %>%
+  select(Variable, mean, min, max, range, sd) %>%
+  mutate(across(where(is.numeric), round, 3))
+
+summary_table_clean <- summary_table_clean %>%
+  mutate(Variable = recode(Variable,
+    "corruption" = "Corruption",
+    "sanction_dummy" = "Sanction Dummy",
+    "sanction_intensity" = "Sanction Intensity",
+    "duration" = "Sanction Duration",
+    "democracy_score" = "Democracy Score",
+    "gdp_growth" = "GDP Growth",
+    "log_gdppc" = "Log GDP per Capita",
+    "pol_stability" = "Political Stability",
+    "trade_openness" = "Trade Openness",
+    "pre_trade_openness" = "One Year Lagged Trade Openness"
+  ))
+
+knitr::kable(
+  summary_table_clean,
+  caption = "Summary Statistics",
+  col.names = c("Variable", "Mean", "Minimum", "Maximum", "Range", "Standard Deviation")
+)
+```
+
+\####**Notes**: These summary statistics are important for interpreting later regression results because the variables operate on very different scales. *Corruption* is measured on V-Dem’s standardized 0–1 index, while *SanctionIntensity* is a constructed exposure measure combining sanction status, lagged trade openness, and sanction duration. The large spread in SanctionIntensity and duration reflects that most country-years face no sanctions, while a smaller subset experience prolonged sanctions exposure. This also helps justify the use of logged duration to account for diminishing effects and the later lead placebo tests as sanctions on average last one year, so a proper placebo test would lean towards a two-year lead specification used to test whether future sanctions exposure predicts current corruption outcomes through pre-existing trends rather than a true sanctions effect.
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+library(tidyverse)
+
+# 1. Raw boxplot: sanction dummy and V-Dem political corruption
+dummy_raw <- ggplot(master_df, aes(x = factor(sanction_dummy), y = corruption)) +
+  geom_boxplot(fill = "blue", alpha = 0.7) +
+  labs(
+    title = "Political Corruption by US-Only Trade Sanction Status",
+    x = "US-Only Trade Sanction (0 = No, 1 = Yes)",
+    y = "V-Dem Political Corruption Index"
+  ) +
+  theme_minimal()
+
+# 2. Raw scatterplot: sanction intensity and V-Dem political corruption
+intensity_raw <- ggplot(master_df, aes(x = sanction_intensity, y = corruption)) +
+  geom_point(alpha = 0.2) +
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(
+    title = "Sanction Intensity and Political Corruption",
+    x = "Sanction Intensity",
+    y = "Corruption - V-Dem Political Corruption Index"
+  ) +
+  theme_minimal()
+
+print(dummy_raw)
+print(intensity_raw)
+```
+
+##### *Notes:* This figure plots the distribution of country-year *Control of Corruption* scores conditional on whether a country is subject to a US-only trade sanction in a given year. The boxplots display the median, interquartile range, and overall spread of corruption outcomes for sanctioned (1) and non-sanctioned (0) observations. The corruption measure is drawn from the World Bank’s Worldwide Governance Indicators and is standardized such that higher values indicate better control of corruption.
+
+##### The figure shows that country-years subject to US-only trade sanctions exhibit lower median levels of corruption control compared to non-sanctioned observations, along with a slightly wider dispersion of outcomes. This pattern is consistent with the hypothesis that sanctions are associated with weaker institutional environments and increased opportunities for rent-seeking behavior. However, the substantial overlap in distributions suggests that sanctions alone do not fully account for variation in corruption, motivating the need for a multivariate framework to isolate the causal effect and explore heterogeneity across regime types.
+
+(Further) Interpretation of the plot: Let it be known that this plot is based off the sanction dummy (as the assignment detailed using the ggplot from the last assignment) which is just the raw regression of control of corruption on sanction dummy, Thus, it is the case that this plot is showing that simply being sanctioned at all is associated with lower levels of corruption control, as seen by the lower median line and slight downward shift of the distribution for sanctioned country-years (1) compared to non-sanctioned ones (0). In other words, the typical sanctioned observation has a worse corruption score. This pattern is consistent with the raw abd unconditional relationship between corruption and the sanction dummy, essentially reflecting the simple regression of control of corruption on the sanction indicator without additional controls. While the overall distributions still overlap substantially, suggesting that sanctions alone do not fully explain variation in corruption,
+
+## Estimation Methodology
+
+### Primary Regression
+
+$$
+Corruption_{it}
+=
+\alpha_i + \delta_t
++ \beta_1 SanctionIntensity_{it}
++ \beta_2 DemocracyScore_{it}
++ \beta_3 \left(SanctionIntensity_{it} \times DemocracyScore_{it}\right)
++ \beta_4 GDPGrowth_{it}
++ \beta_5 LogGDPpc_{it}
++ \beta_6 PolStability_{it}
++ \varepsilon_{it}
+$$
+
+where
+
+$$
+SanctionIntensity_{it}
+=
+SanctionDummy_{it}
+\times OneYear Lagged TradeOpenness_{it}
+\times \log(1 + Duration_{it})
+$$
+
+-   $Corruption_{it}$: the **V-Dem Political Corruption Index** score for country $i$ in year $t$. Higher values indicate more political corruption.
+
+-   $\alpha_i$: **country fixed effects**, which absorb time-invariant characteristics of country $i$, such as geography, legal origins, colonial history, and persistent institutional traits.
+
+-   $\delta_t$: **year fixed effects**, which absorb common shocks affecting all countries in year $t$, such as global recessions, commodity shocks, or broad changes in international sanctions policy.
+
+-   $SanctionIntensity_{it}$: the continuous sanction-intensity measure for country $i$ in year $t$. It increases when a country was under a **US-only trade sanction in the previous year**, when the country had higher pre-sanction trade exposure, and when the sanction episode has lasted longer.
+
+-   $SanctionDummy_{it}$: an indicator equal to 1 if country $i$ was subject to a **US-only trade sanction** in the previous year, and 0 otherwise. I lag this variable by one year so sanction exposure precedes the corruption outcome, following recent sanctions-corruption work that uses lagged sanctions to reduce reverse-causality concerns. \@
+
+-   $Duration_{it}$: the number of years the relevant US-only trade sanction episode has been active, shifted forward one year to match the lagged sanction timing. I use duration because longer sanction episodes may operate differently than short sanctions, especially if institutional and corruption responses emerge over time.
+
+-   $OneYearLaggedTradeOpenness_{it}$: the country’s trade openness before sanction exposure, measured as imports plus exports as a share of GDP. I include it in the construction of $SanctionIntensity_{it}$ because trade sanctions should matter more for countries more exposed to trade, while using lagged trade openness avoids using trade flows already affected by sanctions.
+
+-   $DemocracyScore_{it}$: the **EIU Democracy Index** score for country $i$ in year $t$. I include this because regime type is central to the hypothesis. Recent sanctions-corruption work separates sanction effects by democracies and autocracies, since accountability and institutional constraints may change how sanctions affect corruption. \@
+
+-   $SanctionIntensity_{it} \times DemocracyScore_{it}$: the interaction term between sanction intensity and democracy score. I include this to test whether the effect of sanction intensity on corruption significantly varies by regime type.
+
+-   $GDPGrowth_{it}$: annual GDP growth for country $i$ in year $t$. I include this to control for short-run economic shocks, since economic downturns may affect both corruption and the likelihood of sanctions.
+
+-   $LogGDPpc_{it}$: the logarithm of GDP per capita for country $i$ in year $t$. I include this because economic development is a standard predictor of corruption. Gutmann et al. specifically note that real GDP per capita is the only control with a consistent effect across their corruption specifications, with more developed countries displaying lower corruption. \@
+
+-   $PolStability_{it}$: the **Political Stability and Absence of Violence/Terrorism** score for country $i$ in year $t$. I include this because instability, violence, coups, and terrorism risk may both make US sanctions more likely and independently affect corruption. Recent sanctions-corruption work also emphasizes that sanctioned countries differ from non-sanctioned ones in conflict exposure, making these political-security controls important for selection concerns. \@
+
+-   $\varepsilon_{it}$: the error term.
+
+The marginal effect of sanction intensity on corruption is therefore:
+
+$$
+\frac{\partial Corruption_{it}}{\partial SanctionIntensity_{it}}
+=
+\beta_1 + \beta_3 DemocracyScore_{it}
+$$
+
+This implies that the effect of sanction intensity is allowed to vary systematically across regime types, which we display later in figure 3.2
+
+### Endogeneity Concerns and Remaining Confounders
+
+To reflect on the clear issue of endogeneity since my hypothesis is causal, the primary concern is that U.S. sanctions are not randomly assigned for a multitude of reasons. First, the United States is more likely to sanction countries after political, security, or economic shocks that may themselves affect corruption. Lagging sanctions to fend off this threat of reverse causation reflects these concerns, though many confounders of this economic/political shock susceptibility remain. This is because even after controlling for country fixed effects that compare a country to itself over time, (controlling for stable country-level traits like geography, legal origins, colonial history, baseline institutional culture, long-run resource geography, and historically rooted corruption norms), as well as controlling for year fixed effects (which control for global shocks common to all countries in a given year, such as global recessions, broad shifts in U.S. sanctions policy, commodity price shocks, or changes in international anti-corruption attention) time varying factors remain, in other words, the very idiosyncratic shocks we wich to control away. For example, regime transitions, coups, leadership turnover, election fraud, democratic backsliding, civil conflict, protest waves, terrorism concerns, weapons proliferation, geopolitical realignment toward U.S. rivals, drug trafficking, money laundering, oil dependence, commodity shocks, and macroeconomic crises could all increase the probability of a U.S.-only sanction, whilst also generally increasing corruption through channels such as increasing patronage, emergency procurement, smuggling, weakened courts, elite rent-seeking, or reduced oversight. All are viable concerns of how the destabilizing events mentioned may act as time-varying confounders we have not controlled for directly. I try to reduce this concern by controlling for proxies of these behaviors like GDP growth, log GDP per capita, democracy score, and political stability, all similarly strong correlates and perhaps causal forces of corruption at least as seen through corruption in times of political and economic crisis (and thus, they could lead to increased susceptibility to the imposition of sanctions if said crises are not in the favor of countries like the US). 
+
+Still, some important threats to causality remain difficult to observe directly, especially U.S. strategic motives, security designations, resource politics, elite factional conflict, judicial independence shocks, media and civil society crackdowns. Also, it is critically important to account for pre-existing corruption trajectories. Without all the aforementioned confounders accounted for, our identifying assumption is that, after fixed effects and controls, changes in U.S.-only sanction intensity are not driven by unobserved time-varying shocks that also directly affect corruption. That is a strong assumption, and this should be known before imputing causality to any of the results, whether that be confirming or rejecting the hypotheses. 
+
+To further confirm (or deny) causality in sanctions causing corruption, my primary robustness check and empirical extension is a lead-placebo test using sanctions imposed two years in the future as the independent variable. If future sanctions predict current corruption, this would suggest that sanctions are responding to pre-existing political or economic deterioration rather than causing subsequent corruption, (reverse causality, or provided the remaining confounders, other factors impacting both sanctions and corruption). This test therefore probes whether the main estimates are driven by anticipatory trends, reverse causality, or unobserved/unaccounted-for time-varying confounders, which there are plenty of as mentioned prior (security designations, resource politics, elite factional conflict, etc.)
+
+However, it is important to note that these confounders quite broadly confound in the direction of a positive correlation. In other words, if the U.S.-only sanctions are triggered by coups, conflict, terrorism concerns, drug trafficking, resource shocks, democratic backsliding, or geopolitical realignment (controls we do not account for and thus may actively confound) those same shocks should generally increase political corruption through weaker oversight, emergency procurement, smuggling, patronage, and elite rent-seeking. However, Figure 3.2 shows our regression without controls of pre-existing time trends posits a significant negative relationship among sanctions on corruption. This hints at two things: Either 1) The results are resistant to confounders/we have controlled all primary positive confounders with our original list of controls, or 2) There is a confounder we are missing that may be causing an overbearing negative relationship (contrary to our hypothesis as well as other confounders). Upon examination of possible drivers of this relationship in our sample, it shall be emphasized that some of the highest-intensity observations are relatively high-trade or institutionally stronger cases, including countries such as Ireland, Malta, Latvia, Costa Rica, France, and Greece, where V-Dem political corruption is already low or declining. This matters because my intensity measure uses pre-sanction trade openness and sanction duration, so high intensity does not only mean a politically severe sanction, it also reflects high baseline trade exposure and long sanction duration. Thus, countries of this sort, where sanction intensity may have been high at one point and corruption having been on a downtrend, pre-existing corruption time-trends may be a major confounder driving the contrarian negative relationship. Hence, I choose to include a robustness check by adding country-specific linear time trends to the main regression (Figure 3.3). The results of this robustness check, as we will observe, severely hinder the significance of our test. Given my existing controls in addition to pre-existing corruption time-trends which absorb the significant relationship, additional controls likely would not control for confounders in a meaningful way (and sample size would be further reduced due to incomplete data).
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+# Main two-way fixed effects model
+
+master_df <- master_df %>%
+  mutate(time_trend = year)
+
+model_intensity <- feols(
+  corruption ~ sanction_intensity * democracy_score +
+    gdp_growth + log_gdppc + pol_stability |
+    country + year,
+  data = master_df
+)
+
+modelsummary(
+  model_intensity,
+  stars = TRUE,
+  statistic = "std.error",
+  fmt = 5
+)
+
+```
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+
+library(ggplot2)
+
+# Extract coefficients and variance-covariance matrix
+coefs <- coef(model_intensity)
+vcov_mat <- vcov(model_intensity)
+
+b1 <- coefs["sanction_intensity"]
+b3 <- coefs["sanction_intensity:democracy_score"]
+
+# Democracy range
+demo_seq <- seq(
+  min(master_df$democracy_score, na.rm = TRUE),
+  max(master_df$democracy_score, na.rm = TRUE),
+  length.out = 200
+)
+
+# Compute marginal effects
+marginal_df <- data.frame(
+  democracy_score = demo_seq,
+  marginal_effect = b1 + b3 * demo_seq
+)
+
+# Delta method standard errors
+var_b1 <- vcov_mat["sanction_intensity", "sanction_intensity"]
+var_b3 <- vcov_mat["sanction_intensity:democracy_score", "sanction_intensity:democracy_score"]
+cov_b1b3 <- vcov_mat["sanction_intensity", "sanction_intensity:democracy_score"]
+
+marginal_df$se <- sqrt(
+  var_b1 +
+    (demo_seq^2) * var_b3 +
+    2 * demo_seq * cov_b1b3
+)
+
+# 95% confidence intervals
+marginal_df$upper <- marginal_df$marginal_effect + 1.96 * marginal_df$se
+marginal_df$lower <- marginal_df$marginal_effect - 1.96 * marginal_df$se
+
+# Turning point
+turning_point <- -b1 / b3
+
+# Plot
+main_regression <- ggplot(marginal_df, aes(x = democracy_score, y = marginal_effect)) +
+  geom_line(linewidth = 1) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.2) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_vline(xintercept = turning_point, linetype = "dotted") +
+  labs(
+    title = "Marginal Effect of Sanction Intensity on Political Corruption",
+    subtitle = "V-Dem Political Corruption Index",
+    x = "Democracy Score",
+    y = "Marginal Effect of Sanction Intensity"
+  ) +
+  theme_minimal()
+
+print(main_regression)
+
+```
+
+Now after controlling for country trends of corruption over the duration of inspection (on top of country and year fixed effects), we observe no significant effect of sanctions on corruption:
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+# Main two-way fixed effects model
+
+master_df <- master_df %>%
+  mutate(time_trend = year)
+
+model_intensity <- feols(
+  corruption ~ sanction_intensity * democracy_score +
+    gdp_growth + log_gdppc + pol_stability |
+    country[time_trend] + year,
+  data = master_df
+)
+modelsummary(
+  model_intensity,
+  stars = TRUE,
+  statistic = "std.error",
+  fmt = 5
+)
+
+```
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+
+library(ggplot2)
+
+# Extract coefficients and variance-covariance matrix
+coefs <- coef(model_intensity)
+vcov_mat <- vcov(model_intensity)
+
+b1 <- coefs["sanction_intensity"]
+b3 <- coefs["sanction_intensity:democracy_score"]
+
+# Democracy range
+demo_seq <- seq(
+  min(master_df$democracy_score, na.rm = TRUE),
+  max(master_df$democracy_score, na.rm = TRUE),
+  length.out = 200
+)
+
+# Compute marginal effects
+marginal_df <- data.frame(
+  democracy_score = demo_seq,
+  marginal_effect = b1 + b3 * demo_seq
+)
+
+# Delta method standard errors
+var_b1 <- vcov_mat["sanction_intensity", "sanction_intensity"]
+var_b3 <- vcov_mat["sanction_intensity:democracy_score", "sanction_intensity:democracy_score"]
+cov_b1b3 <- vcov_mat["sanction_intensity", "sanction_intensity:democracy_score"]
+
+marginal_df$se <- sqrt(
+  var_b1 +
+    (demo_seq^2) * var_b3 +
+    2 * demo_seq * cov_b1b3
+)
+
+# 95% confidence intervals
+marginal_df$upper <- marginal_df$marginal_effect + 1.96 * marginal_df$se
+marginal_df$lower <- marginal_df$marginal_effect - 1.96 * marginal_df$se
+
+# Turning point
+turning_point <- -b1 / b3
+
+# Plot
+time_trends <- ggplot(marginal_df, aes(x = democracy_score, y = marginal_effect)) +
+  geom_line(linewidth = 1) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.2) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_vline(xintercept = turning_point, linetype = "dotted") +
+  labs(
+    title = "Marginal Effect of Sanction Intensity on Political Corruption",
+    subtitle = "V-Dem Political Corruption Index",
+    x = "Democracy Score",
+    y = "Marginal Effect of Sanction Intensity"
+  ) +
+  theme_minimal()
+
+print(time_trends)
+```
+
+The results show that sanction intensity is INNNNsignificantly related to corruption, but the relationship depends on democracy. The main coefficient is positive and significant, suggesting that in less democratic countries, higher sanction intensity is associated with worse corruption outcomes. The interaction term is negative and significant, meaning this relationship becomes weaker as democracy increases.
+
+This pattern shows up in the plot as well. At low levels of democracy, sanction intensity is positively associated with corruption, but the effect steadily declines as democracy rises and crosses zero around a score of \~7. In more democratic countries, the relationship turns negative, meaning higher sanction intensity is associated with better corruption control. Overall, the results point to a clear difference across regime types in how sanction intensity relates to corruption.
+
+## (4b) Research Design (Placebo Test)
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+
+placebo_df <- master_df %>%
+  arrange(country, year) %>%
+  group_by(country) %>%
+  mutate(
+    sanction_intensity_lead2 = lead(sanction_intensity, 2)
+  ) %>%
+  ungroup()
+
+placebo_lead <- feols(
+  corruption ~ sanction_intensity_lead2 * democracy_score +
+    gdp_growth + log_gdppc + pol_stability |
+    country + year,
+  data = placebo_df
+)
+
+modelsummary(
+  placebo_lead,
+  stars = TRUE,
+  statistic = "std.error",
+  fmt = 5
+)
+```
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE}
+library(ggplot2)
+
+# Extract coefficients and variance-covariance matrix from placebo model
+coefs_p <- coef(placebo_lead)
+vcov_p <- vcov(placebo_lead)
+
+b1_p <- coefs_p["sanction_intensity_lead2"]
+b3_p <- coefs_p["sanction_intensity_lead2:democracy_score"]
+
+# Democracy range
+demo_seq_p <- seq(
+  min(placebo_df$democracy_score, na.rm = TRUE),
+  max(placebo_df$democracy_score, na.rm = TRUE),
+  length.out = 200
+)
+
+# Compute marginal effects
+placebo_marginal_df <- data.frame(
+  democracy_score = demo_seq_p,
+  marginal_effect = b1_p + b3_p * demo_seq_p
+)
+
+# Delta method standard errors
+var_b1_p <- vcov_p["sanction_intensity_lead2", "sanction_intensity_lead2"]
+var_b3_p <- vcov_p[
+  "sanction_intensity_lead2:democracy_score",
+  "sanction_intensity_lead2:democracy_score"
+]
+cov_b1b3_p <- vcov_p[
+  "sanction_intensity_lead2",
+  "sanction_intensity_lead2:democracy_score"
+]
+
+placebo_marginal_df$se <- sqrt(
+  var_b1_p +
+    (demo_seq_p^2) * var_b3_p +
+    2 * demo_seq_p * cov_b1b3_p
+)
+
+# 95% confidence intervals
+placebo_marginal_df$upper <- placebo_marginal_df$marginal_effect + 1.96 * placebo_marginal_df$se
+placebo_marginal_df$lower <- placebo_marginal_df$marginal_effect - 1.96 * placebo_marginal_df$se
+
+# Turning point
+turning_point_p <- -b1_p / b3_p
+
+# Plot
+placebo_regression <- ggplot(placebo_marginal_df, aes(x = democracy_score, y = marginal_effect)) +
+  geom_line(linewidth = 1) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), alpha = 0.2) +
+  geom_hline(yintercept = 0, linetype = "dashed") +
+  geom_vline(xintercept = turning_point_p, linetype = "dotted") +
+  labs(
+    title = "Placebo Test: Marginal Effect of Future Sanction Intensity on Political Corruption",
+    subtitle = "Lead placebo using sanction intensity two years ahead",
+    x = "Democracy Score",
+    y = "Marginal Effect of Future Sanction Intensity"
+  ) +
+  theme_minimal()
+
+print(placebo_regression)
+```
+
+------------------------------------------------------------------------
+
+The placebo results provide little evidence of reverse causality. While there is weak statistical significance at very low levels of democracy (only at the 10% level), the confidence intervals are much wider and include zero for most of the democracy range. Compared to the main results, where the effects were clearly significant and precisely estimated, this placebo plot shows much less consistent and much noisier relationships.
+
+This difference is important in the sense that If sanctions were simply responding to already rising corruption, we would expect to see a similar strong and significant pattern when predicting *past* corruption, but we don’t. Instead, the lack of strong significance and the large overlap with zero suggest that future sanction intensity is not systematically driven by prior corruption levels. Overall, this weak and imprecise relationship in the placebo test supports the interpretation that the main results are not just picking up reverse causality, but instead reflect a more meaningful relationship between sanction intensity and corruption.
+
+```         
+## References
+```
