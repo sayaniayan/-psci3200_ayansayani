@@ -346,7 +346,7 @@ knitr::kable(
 
 Figure 3.1
 
-##### **Notes**: These summary statistics are important for interpreting later regression results because the variables operate on quite different scales. *Corruption* is measured on V-Dem’s standardized 0–1 index, while *SanctionIntensity* is a constructed exposure measure combining sanction status, lagged trade openness, and sanction duration. The large spread in SanctionIntensity and duration reflects that most country-years face no sanctions, while a smaller subset experience prolonged sanctions exposure. This also helps justify the use of logged duration to account for diminishing effects and the later lead placebo tests as sanctions on average last one year, so a proper placebo test would lean towards a two-year lead specification used to test whether future sanctions exposure predicts current corruption outcomes through pre-existing trends rather than a true sanctions effect.
+**Notes**: These summary statistics are important for interpreting later regression results because the variables operate on quite different scales. *Corruption* is measured on V-Dem’s standardized 0–1 index, while *SanctionIntensity* is a constructed exposure measure combining sanction status, lagged trade openness, and sanction duration. The large spread in SanctionIntensity and duration reflects that most country-years face no sanctions, while a smaller subset experience prolonged sanctions exposure. This also helps justify the use of logged duration to account for diminishing effects and the later lead placebo tests as sanctions on average last one year, so a proper placebo test would lean towards a two-year lead specification used to test whether future sanctions exposure predicts current corruption outcomes through pre-existing trends rather than a true sanctions effect.
 
 ## Estimation Methodology
 
@@ -643,7 +643,7 @@ print(time_trends)
 
 Figure 4.6
 
-##### **Notes:** After introducing country-specific time trends, the marginal effect of *sanction_intensity* is no longer statistically distinguishable from zero across democracy levels, as shown by the confidence interval overlapping the zero line throughout the distribution. This suggests the earlier significant relationship was at least partially driven by pre-existing country-level corruption trajectories rather than sanctions themselves.
+**Notes:** After introducing country-specific time trends, the marginal effect of *sanction_intensity* is no longer statistically distinguishable from zero across democracy levels, as shown by the confidence interval overlapping the zero line throughout the distribution. This suggests the earlier significant relationship was at least partially driven by pre-existing country-level corruption trajectories rather than sanctions themselves.
 
 ## (5) Empirical Extension (2-Year Lead Sanction Placebo Test)
 
@@ -744,7 +744,7 @@ print(placebo_regression)
 
 Figure 5.2
 
-##### **Notes:** The placebo specification continues to show a statistically significant negative relationship in lower-democracy regimes, reinforcing concerns that pre-existing political or institutional trajectories may still be driving part of the observed sanctions-corruption relationship rather than sanctions themselves.
+**Notes:** The placebo specification continues to show a statistically significant negative relationship in lower-democracy regimes, reinforcing concerns that pre-existing political or institutional trajectories may still be driving part of the observed sanctions-corruption relationship rather than sanctions themselves.
 
 ------------------------------------------------------------------------
 
