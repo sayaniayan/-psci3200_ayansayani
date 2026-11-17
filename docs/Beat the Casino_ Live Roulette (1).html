@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Beat the Casino: Live Roulette</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;600;700&display=swap">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:dark;
+  --felt:#0E3B2B;
+  --panel:#134733;
+  --line:#2F6F55;
+  --cream:#F3EAD3;
+  --muted:#BCD6C8;
+  --brass:#D6A94A;
+  --on-brass:#1B1608;
+  --red:#C23A2E;
+  --black:#17191C;
+  --green:#2F9E62;
+  --on-green:#06210F;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --felt:#0B3325;
+    --panel:#103E2D;
+    --line:#2A6850;
+  }
+}
+:root[data-theme="dark"]{
+  --felt:#0B3325;
+  --panel:#103E2D;
+  --line:#2A6850;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{
+  margin:0;
+  background:var(--felt);
+  color:var(--cream);
+  font-family:'DM Sans',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+  font-size:18px;
+  line-height:1.45;
+}
+h1,h2{font-family:'Playfair Display',Georgia,'Times New Roman',serif;margin:0;font-weight:700}
+h1{font-size:clamp(34px,4.6vw,64px);font-weight:800;line-height:1.05}
+h2{font-size:24px;margin-bottom:12px}
+button{font:inherit;color:inherit}
+
+.stage{
+  max-width:1500px;
+  margin:0 auto;
+  padding:24px clamp(16px,3vw,40px) 48px;
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(340px,.95fr);
+  grid-template-areas:"head head" "wheel side" "long long";
+  gap:24px 40px;
+}
+.head{grid-area:head;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 28px}
+.rules{margin:0;font-size:clamp(18px,2vw,26px);color:var(--muted)}
+.rules b{color:var(--brass);font-weight:700}
+.wheel{grid-area:wheel;align-self:start}
+#wheel{display:block;width:100%;max-width:700px;aspect-ratio:1/1;margin:0 auto}
+.side{grid-area:side;display:flex;flex-direction:column;gap:18px}
+.long{grid-area:long}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 22px}
+
+.board{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.chip{
+  width:64px;height:64px;border-radius:50%;
+  display:grid;place-items:center;align-content:center;
+  font-weight:700;font-size:24px;line-height:1;
+  border:2px solid rgba(243,234,211,.35);
+}
+.chip small{display:block;font-size:13px;font-weight:600;margin-top:3px;opacity:.95}
+.chip.red{background:var(--red);color:#FFF6EA}
+.chip.black{background:var(--black);color:var(--cream)}
+.chip.green{background:var(--green);color:var(--on-green)}
+.chip.newest{outline:4px solid var(--brass);outline-offset:3px}
+.streak{margin:14px 0 0;font-size:22px;font-weight:700;letter-spacing:.04em;color:var(--brass)}
+
+.votes{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.votes li{display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:12px}
+.swatch{width:22px;height:22px;border-radius:50%;border:2px solid rgba(243,234,211,.5)}
+.swatch.red{background:var(--red)}
+.swatch.black{background:var(--black)}
+.swatch.green{background:var(--green)}
+.vname{font-weight:700;font-size:22px;line-height:1.15}
+.vname span{display:block;font-weight:400;font-size:15px;color:var(--muted)}
+.stepper{display:flex;align-items:center;gap:8px}
+.stepper button{
+  width:44px;height:44px;border-radius:50%;
+  border:2px solid var(--brass);background:transparent;
+  font-size:26px;line-height:1;cursor:pointer;
+}
+.stepper button:hover{background:rgba(214,169,74,.18)}
+.count{min-width:2.2ch;text-align:center;font-size:30px;font-weight:700}
+
+.spin{
+  appearance:none;border:0;cursor:pointer;
+  background:var(--brass);color:var(--on-brass);
+  font-weight:700;font-size:28px;
+  padding:18px 24px;border-radius:999px;
+}
+.spin:hover:not(:disabled){filter:brightness(1.07)}
+.spin:disabled{opacity:.6;cursor:default}
+button:focus-visible{outline:3px solid var(--cream);outline-offset:3px}
+
+.result[hidden]{display:none}
+.landed{display:flex;align-items:center;gap:16px;margin-bottom:14px}
+.landed .chip{width:76px;height:76px;font-size:30px;flex:none}
+.landed p{margin:0;font-size:26px;font-weight:700;line-height:1.2}
+.landed p span{display:block;font-size:18px;font-weight:400;color:var(--muted)}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:430px;font-size:18px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line)}
+th{font-size:15px;color:var(--muted);font-weight:600}
+td.num,th.num{text-align:right}
+.sum{margin:12px 0 0;font-size:20px;font-weight:600}
+
+.long p{margin:0 0 12px;color:var(--muted)}
+.ghost{
+  appearance:none;cursor:pointer;background:transparent;
+  border:2px solid var(--brass);color:var(--cream);
+  padding:10px 18px;border-radius:999px;font-weight:600;
+}
+.ghost:hover{background:rgba(214,169,74,.18)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.out{margin:14px 0 0;font-size:20px;color:var(--cream)}
+.out b{color:var(--brass)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (max-width:900px){
+  .stage{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "wheel" "side" "long"}
+}
+</style>
+</head>
+<body>
+<main class="stage">
+  <header class="head">
+    <h1>Beat the Casino</h1>
+    <p class="rules">You have <b>$100</b>. Bet <b>$20</b> on red, black or neither.</p>
+  </header>
+
+  <section class="wheel">
+    <canvas id="wheel" role="img" aria-label="American roulette wheel with 38 pockets"></canvas>
+    <div id="live" class="sr" aria-live="polite"></div>
+  </section>
+
+  <section class="side">
+    <div class="card">
+      <h2>Last spins</h2>
+      <ol id="board" class="board" aria-label="Recent spin results, oldest first"></ol>
+      <p id="streak" class="streak"></p>
+    </div>
+
+    <div class="card">
+      <h2>Show of hands</h2>
+      <ul id="votes" class="votes"></ul>
+    </div>
+
+    <button id="spin" class="spin" type="button">Spin the wheel</button>
+
+    <div id="result" class="card result" hidden></div>
+  </section>
+
+  <section class="card long">
+    <h2>Spin it again</h2>
+    <p>Run more spins to see how the wheel behaves over time. The five red results on the board are a staged starting display. Every spin you run here is random.</p>
+    <div class="actions">
+      <button id="sim" class="ghost" type="button">Simulate 100,000 spins</button>
+      <button id="reset" class="ghost" type="button">Start a new round</button>
+    </div>
+    <p id="simout" class="out" aria-live="polite"></p>
+  </section>
+</main>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- Wheel data (American double-zero wheel, 38 pockets) ---------- */
+  var ORDER = ['0','28','9','26','30','11','7','20','32','17','5','22','34','15','3','24','36','13','1','00',
+               '27','10','25','29','12','8','19','31','18','6','21','33','16','4','23','35','14','2'];
+  var N = ORDER.length;
+  var TAU = Math.PI * 2;
+  var SEG = TAU / N;
+  var REDS = {1:1,3:1,5:1,7:1,9:1,12:1,14:1,16:1,18:1,19:1,21:1,23:1,25:1,27:1,30:1,32:1,34:1,36:1};
+  function colorOf(label){
+    if(label === '0' || label === '00') return 'green';
+    return REDS[+label] ? 'red' : 'black';
+  }
+  var LETTER = {red:'R', black:'B', green:'G'};
+  var WORD = {red:'red', black:'black', green:'green'};
+
+  /* ---------- Bets ---------- */
+  var BANK = 100, STAKE = 20;
+  var BETS = [
+    {id:'red',     label:'Red',     hint:'pays 1 to 1',               sw:'red',   pays:1,  test:function(c){return c==='red';}},
+    {id:'black',   label:'Black',   hint:'pays 1 to 1',               sw:'black', pays:1,  test:function(c){return c==='black';}},
+    {id:'neither', label:'Neither', hint:'green 0 or 00, pays 35 to 1', sw:'green', pays:35, test:function(c){return c==='green';}}
+  ];
+  var votes = {red:0, black:0, neither:0};
+
+  /* ---------- Randomness ---------- */
+  function randInt(n){
+    try{
+      var lim = Math.floor(4294967296 / n) * n;
+      var a = new Uint32Array(1);
+      do { crypto.getRandomValues(a); } while(a[0] >= lim);
+      return a[0] % n;
+    }catch(e){
+      return Math.floor(Math.random() * n);
+    }
+  }
+
+  /* ---------- State ---------- */
+  var STAGED = ['7','32','19','12','23'];   /* all red numbers: the staged R-R-R-R-R display */
+  var history = [];
+  var wheelAngle = 0;
+  var ball = {show:false, phi:0, R:252};
+  var highlight = null;
+  var spinning = false;
+  var spinsRun = 0;
+
+  var $ = function(id){return document.getElementById(id);};
+  var cv = $('wheel'), ctx = cv.getContext('2d');
+  var SIZE = 620;
+
+  /* ---------- Drawing ---------- */
+  function ring(cx, cy, r0, r1, fill){
+    ctx.beginPath();
+    ctx.arc(cx, cy, r1, 0, TAU);
+    ctx.arc(cx, cy, r0, 0, TAU, true);
+    ctx.fillStyle = fill;
+    ctx.fill();
+  }
+
+  function pocketPath(cx, cy, i, rIn, rOut){
+    var c = wheelAngle + i * SEG - Math.PI / 2;
+    var a0 = c - SEG / 2, a1 = c + SEG / 2;
+    ctx.beginPath();
+    ctx.arc(cx, cy, rOut, a0, a1);
+    ctx.arc(cx, cy, rIn, a1, a0, true);
+    ctx.closePath();
+  }
+
+  function draw(){
+    var s = cv.width / SIZE;
+    ctx.setTransform(s, 0, 0, s, 0, 0);
+    ctx.clearRect(0, 0, SIZE, SIZE);
+    var cx = SIZE / 2, cy = SIZE / 2;
+
+    /* outer brass rim */
+    var g = ctx.createRadialGradient(cx, cy, 270, cx, cy, 310);
+    g.addColorStop(0, '#E9CB78'); g.addColorStop(.5, '#B98A2C'); g.addColorStop(1, '#7B5818');
+    ctx.beginPath(); ctx.arc(cx, cy, 310, 0, TAU); ctx.fillStyle = g; ctx.fill();
+
+    /* ball track */
+    var t = ctx.createRadialGradient(cx, cy, 236, cx, cy, 292);
+    t.addColorStop(0, '#0A1C14'); t.addColorStop(1, '#16402D');
+    ctx.beginPath(); ctx.arc(cx, cy, 292, 0, TAU); ctx.fillStyle = t; ctx.fill();
+
+    /* pockets */
+    for(var i = 0; i < N; i++){
+      pocketPath(cx, cy, i, 178, 238);
+      var col = colorOf(ORDER[i]);
+      ctx.fillStyle = col === 'red' ? '#C23A2E' : (col === 'black' ? '#17191C' : '#23814E');
+      ctx.fill();
+      ctx.lineWidth = 2; ctx.strokeStyle = '#D6A94A'; ctx.stroke();
+    }
+
+    /* winning pocket highlight */
+    if(highlight !== null){
+      pocketPath(cx, cy, highlight, 178, 238);
+      ctx.lineWidth = 6; ctx.strokeStyle = '#FFF3C4'; ctx.stroke();
+    }
+
+    /* numbers */
+    ctx.font = "700 21px 'DM Sans', Arial, sans-serif";
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#F6EEDA';
+    for(var k = 0; k < N; k++){
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.rotate(wheelAngle + k * SEG);
+      ctx.fillText(ORDER[k], 0, -208);
+      ctx.restore();
+    }
+
+    /* inner brass ring and cone */
+    ring(cx, cy, 168, 178, '#C79B3B');
+    var cone = ctx.createRadialGradient(cx, cy, 30, cx, cy, 170);
+    cone.addColorStop(0, '#5A3B1C'); cone.addColorStop(1, '#2A1A0C');
+    ctx.beginPath(); ctx.arc(cx, cy, 168, 0, TAU); ctx.fillStyle = cone; ctx.fill();
+
+    /* spokes (rotate with wheel) */
+    ctx.save();
+    ctx.translate(cx, cy); ctx.rotate(wheelAngle);
+    ctx.strokeStyle = '#D6A94A'; ctx.lineWidth = 9; ctx.lineCap = 'round';
+    for(var j = 0; j < 4; j++){
+      ctx.save(); ctx.rotate(j * Math.PI / 2);
+      ctx.beginPath(); ctx.moveTo(0, -30); ctx.lineTo(0, -138); ctx.stroke();
+      ctx.beginPath(); ctx.arc(0, -146, 11, 0, TAU); ctx.fillStyle = '#E9CB78'; ctx.fill();
+      ctx.restore();
+    }
+    ctx.restore();
+    var hub = ctx.createRadialGradient(cx - 8, cy - 8, 4, cx, cy, 44);
+    hub.addColorStop(0, '#F1D98C'); hub.addColorStop(1, '#9A7120');
+    ctx.beginPath(); ctx.arc(cx, cy, 44, 0, TAU); ctx.fillStyle = hub; ctx.fill();
+
+    /* ball */
+    if(ball.show){
+      var bx = cx + ball.R * Math.sin(ball.phi);
+      var by = cy - ball.R * Math.cos(ball.phi);
+      ctx.save();
+      ctx.shadowColor = 'rgba(0,0,0,.55)'; ctx.shadowBlur = 8; ctx.shadowOffsetY = 3;
+      var bg = ctx.createRadialGradient(bx - 3, by - 3, 1, bx, by, 10);
+      bg.addColorStop(0, '#FFFFFF'); bg.addColorStop(1, '#C9C3B2');
+      ctx.beginPath(); ctx.arc(bx, by, 10, 0, TAU); ctx.fillStyle = bg; ctx.fill();
+      ctx.restore();
+    }
+  }
+
+  function fit(){
+    var w = cv.getBoundingClientRect().width || 600;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.round(w * dpr);
+    cv.height = Math.round(w * dpr);
+    draw();
+  }
+
+  /* ---------- Easing ---------- */
+  function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
+  function easeOutBounce(x){
+    var n1 = 7.5625, d1 = 2.75;
+    if(x < 1 / d1) return n1 * x * x;
+    if(x < 2 / d1) return n1 * (x -= 1.5 / d1) * x + 0.75;
+    if(x < 2.5 / d1) return n1 * (x -= 2.25 / d1) * x + 0.9375;
+    return n1 * (x -= 2.625 / d1) * x + 0.984375;
+  }
+
+  /* ---------- Board ---------- */
+  function renderBoard(){
+    var el = $('board');
+    el.innerHTML = '';
+    var shown = history.slice(-10);
+    shown.forEach(function(h, i){
+      var li = document.createElement('li');
+      li.className = 'chip ' + h.color + (h.live && i === shown.length - 1 ? ' newest' : '');
+      li.setAttribute('aria-label', WORD[h.color] + ' ' + h.label);
+      li.innerHTML = h.label + '<small>' + LETTER[h.color] + '</small>';
+      el.appendChild(li);
+    });
+    var last5 = history.slice(-5).map(function(h){return LETTER[h.color];});
+    $('streak').textContent = last5.join(' - ');
+  }
+
+  function seedBoard(){
+    history = STAGED.map(function(l){return {label:l, color:colorOf(l), live:false};});
+    renderBoard();
+  }
+
+  /* ---------- Votes ---------- */
+  function renderVotes(){
+    var ul = $('votes');
+    ul.innerHTML = '';
+    BETS.forEach(function(b){
+      var li = document.createElement('li');
+      li.innerHTML =
+        '<span class="swatch ' + b.sw + '" aria-hidden="true"></span>' +
+        '<span class="vname">' + b.label + '<span>' + b.hint + '</span></span>' +
+        '<span class="stepper">' +
+          '<button type="button" data-id="' + b.id + '" data-d="-1" aria-label="One fewer hand for ' + b.label + '">\u2212</button>' +
+          '<span class="count" id="c-' + b.id + '" aria-live="polite">' + votes[b.id] + '</span>' +
+          '<button type="button" data-id="' + b.id + '" data-d="1" aria-label="One more hand for ' + b.label + '">+</button>' +
+        '</span>';
+      ul.appendChild(li);
+    });
+  }
+  $('votes').addEventListener('click', function(e){
+    var btn = e.target.closest('button');
+    if(!btn) return;
+    var id = btn.getAttribute('data-id');
+    var d = +btn.getAttribute('data-d');
+    votes[id] = Math.max(0, votes[id] + d);
+    $('c-' + id).textContent = votes[id];
+  });
+
+  /* ---------- Result ---------- */
+  function money(n){ return '$' + n.toLocaleString('en-US'); }
+
+  function showResult(h){
+    var total = 0, winners = 0;
+    var rows = BETS.map(function(b){
+      var win = b.test(h.color);
+      var n = votes[b.id];
+      total += n;
+      if(win) winners += n;
+      var change = win ? STAKE * b.pays : STAKE;
+      var bank = win ? BANK + change : BANK - change;
+      return '<tr><td>' + b.label + '</td><td>' + (win ? 'Won' : 'Lost') + '</td>' +
+             '<td class="num">' + (win ? '+' : '\u2212') + money(change) + '</td>' +
+             '<td class="num">' + money(bank) + '</td>' +
+             '<td class="num">' + n + '</td></tr>';
+    }).join('');
+    var losers = total - winners;
+    var el = $('result');
+    el.innerHTML =
+      '<div class="landed"><div class="chip ' + h.color + '">' + h.label + '<small>' + LETTER[h.color] + '</small></div>' +
+      '<p>Landed on ' + h.label + ', ' + WORD[h.color] + '<span>Check your bankroll</span></p></div>' +
+      '<div class="tablewrap"><table><thead><tr><th>Bet</th><th>Result</th><th class="num">Change</th>' +
+      '<th class="num">Bankroll</th><th class="num">Hands</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+      (total > 0 ? '<p class="sum">Winners: ' + winners + ' &nbsp; Losers: ' + losers + '</p>' : '');
+    el.hidden = false;
+    $('live').textContent = 'The ball landed on ' + h.label + ', ' + WORD[h.color] + '.';
+  }
+
+  /* ---------- Spin ---------- */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function spin(){
+    if(spinning) return;
+    spinning = true;
+    $('spin').disabled = true;
+    $('spin').textContent = 'Spinning\u2026';
+    $('result').hidden = true;
+    highlight = null;
+
+    var idx = randInt(N);                    /* the only thing that decides the outcome */
+    var w0 = wheelAngle;
+    var wEnd = w0 + TAU * (3 + Math.floor(Math.random() * 2)) + Math.random() * TAU;
+    var laps = 8 + Math.floor(Math.random() * 2);
+    var aTarget = idx * SEG;
+    var T = reduce ? 500 : 7200;
+    var start = performance.now();
+    ball.show = true;
+
+    function frame(now){
+      var t = Math.min(1, (now - start) / T);
+      var e = easeOutCubic(t);
+      wheelAngle = w0 + (wEnd - w0) * e;
+      var rel = aTarget - TAU * laps * (1 - e);
+      ball.phi = wheelAngle + rel;
+      if(t < 0.55){
+        ball.R = 252;
+      }else{
+        var u = (t - 0.55) / 0.45;
+        ball.R = 252 - 30 * easeOutBounce(Math.min(1, u));
+      }
+      draw();
+      if(t < 1){
+        requestAnimationFrame(frame);
+      }else{
+        wheelAngle = wEnd % TAU;
+        ball.phi = wheelAngle + aTarget;
+        ball.R = 222;
+        highlight = idx;
+        draw();
+        var label = ORDER[idx];
+        var h = {label:label, color:colorOf(label), live:true};
+        history.push(h);
+        spinsRun++;
+        renderBoard();
+        showResult(h);
+        spinning = false;
+        $('spin').disabled = false;
+        $('spin').textContent = 'Spin again';
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------- 100,000 spin simulation ---------- */
+  function simulate(){
+    var n = 100000, done = 0;
+    var r = 0, b = 0, g = 0;
+    var run = 0, after = 0, afterRed = 0;
+    var buf = new Uint32Array(16384);
+    try{
+      while(done < n){
+        crypto.getRandomValues(buf);
+        for(var i = 0; i < buf.length && done < n; i++, done++){
+          var col = colorOf(ORDER[buf[i] % N]);
+          if(run >= 5){ after++; if(col === 'red') afterRed++; }
+          if(col === 'red'){ r++; run++; } else { run = 0; if(col === 'black') b++; else g++; }
+        }
+      }
+    }catch(e){
+      $('simout').textContent = 'The simulation could not run in this browser.';
+      return;
+    }
+    function pct(x, y){ return (100 * x / y).toFixed(1) + '%'; }
+    $('simout').innerHTML =
+      'Out of ' + n.toLocaleString('en-US') + ' spins: red <b>' + pct(r, n) + '</b>, black <b>' + pct(b, n) +
+      '</b>, green <b>' + pct(g, n) + '</b>. After five or more reds in a row (' + after.toLocaleString('en-US') +
+      ' times), the next spin was red <b>' + pct(afterRed, after) + '</b> of the time. The wheel has no memory.';
+  }
+
+  /* ---------- New round ---------- */
+  function newRound(){
+    if(spinning) return;
+    votes = {red:0, black:0, neither:0};
+    renderVotes();
+    $('result').hidden = true;
+    $('simout').textContent = '';
+    highlight = null;
+    ball.show = false;
+    $('spin').textContent = 'Spin the wheel';
+    seedBoard();
+    draw();
+  }
+
+  /* ---------- Wire up ---------- */
+  $('spin').addEventListener('click', spin);
+  $('sim').addEventListener('click', simulate);
+  $('reset').addEventListener('click', newRound);
+  window.addEventListener('resize', fit);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(draw); }
+
+  renderVotes();
+  seedBoard();
+  fit();
+})();
+</script>
+</body>
+</html>
